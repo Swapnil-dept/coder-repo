@@ -15,6 +15,6 @@ footer .footer p {
 
 @media (width >= 900px) {
   footer .footer > div {
-    padding: 40px 32px 24px;
+    padding: 44px 32px 24px;
   }
 }
