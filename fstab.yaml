@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p48457-e1275402.adobeaemcloud.com/bin/franklin.delivery/Swapnil-dept/coder-repo/main"
+    url: "https://author-p48457-e1275402.adobeaemcloud.com/bin/franklin.delivery/swapnil-dept/coder-repo/main"
     type: "markup"
     suffix: ".html"
