@@ -18,7 +18,7 @@
   --text-color: #212529;
   --link-color: #2d73ae;
   --link-hover-color: #1d9798;
-  --heading-color: #2d73ae;
+  --heading-color: #212529;
 
   /* fonts */
   --body-font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -162,7 +162,7 @@ button {
   max-width: 100%;
   margin: 12px 0;
   border: 1px solid transparent;
-  border-radius: 5px;
+  border-radius: 0;
   padding: 9.6px 19.2px;
   font-family: var(--body-font-family);
   font-style: normal;
@@ -170,7 +170,7 @@ button {
   line-height: 1.31;
   text-align: center;
   text-decoration: none;
-  background: linear-gradient(90deg, #2d73ae 0%, #1d9798 89%);
+  background: linear-gradient(to right, #1b9f94 0%, #316db3 100%);
   color: #fff;
   cursor: pointer;
   overflow: hidden;
@@ -182,7 +182,7 @@ a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background: linear-gradient(90deg, #1d9798 0%, #2d73ae 89%);
+  background: linear-gradient(to right, #316db3 0%, #1b9f94 100%);
   cursor: pointer;
 }
 

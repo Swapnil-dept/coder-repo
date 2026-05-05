@@ -1,0 +1,118 @@
+{
+  "definitions": [
+    {
+      "title": "Tabs Cards",
+      "id": "tabs-cards",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Tabs Cards",
+              "filter": "tabs-cards"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Tab",
+      "id": "tabs-cards-tab",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Tab",
+              "model": "tabs-cards-tab",
+              "filter": "tabs-cards-tab-items"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Tab Card",
+      "id": "tabs-cards-card",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Tab Card",
+              "model": "tabs-cards-card"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "tabs-cards-tab",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "tabTitle",
+          "label": "Tab Title"
+        }
+      ]
+    },
+    {
+      "id": "tabs-cards-card",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Image Alt Text"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "description",
+          "label": "Description"
+        },
+        {
+          "component": "aem-content",
+          "name": "link",
+          "label": "Button Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "linkText",
+          "label": "Button Text"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "tabs-cards",
+      "components": [
+        "tabs-cards-tab"
+      ]
+    },
+    {
+      "id": "tabs-cards-tab-items",
+      "components": [
+        "tabs-cards-card"
+      ]
+    }
+  ]
+}

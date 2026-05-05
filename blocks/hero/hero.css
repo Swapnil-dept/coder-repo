@@ -29,10 +29,10 @@
 }
 
 .hero a.button:any-link {
-  background: linear-gradient(90deg, #2d73ae 0%, #1d9798 89%);
+  background: linear-gradient(to right, #1b9f94 0%, #316db3 100%);
   color: #fff;
-  border-radius: 5px;
-  padding: 9.6px 19.2px;
+  border-radius: 0;
+  padding: 8px 16px;
 }
 
 .hero picture {

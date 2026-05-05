@@ -21,7 +21,7 @@
 }
 
 .columns h3 {
-  color: var(--heading-color, #2d73ae);
+  color: var(--heading-color);
   font-size: var(--heading-font-size-l);
   font-weight: 500;
   margin-bottom: 8px;
@@ -30,6 +30,16 @@
 .columns p {
   margin-top: 0;
   margin-bottom: 16px;
+}
+
+.columns a.button:any-link {
+  background: none;
+  color: var(--link-color);
+  padding: 0;
+  margin: 0;
+  white-space: normal;
+  text-align: left;
+  font-weight: 400;
 }
 
 @media (width >= 900px) {

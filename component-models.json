@@ -214,5 +214,57 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "tabs-cards-tab",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tabTitle",
+        "label": "Tab Title"
+      }
+    ]
+  },
+  {
+    "id": "tabs-cards-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Button Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Button Text"
+      }
+    ]
   }
 ]

@@ -38,5 +38,17 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "tabs-cards",
+    "components": [
+      "tabs-cards-tab"
+    ]
+  },
+  {
+    "id": "tabs-cards-tab-items",
+    "components": [
+      "tabs-cards-card"
+    ]
   }
 ]
