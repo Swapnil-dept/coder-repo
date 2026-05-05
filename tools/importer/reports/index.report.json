@@ -1,8 +1,14 @@
 {
-  "status": "failed",
-  "url": "https://www.nprpl.com/",
+  "status": "success",
+  "url": "https://www.ageupl.com/",
   "path": "index",
-  "timestamp": "2026-05-04T13:34:45.589Z",
-  "error": "CustomImportScript.default not found after 10s. The bundled script may not have loaded correctly. Check browser console for errors.",
-  "errorStack": "Error: CustomImportScript.default not found after 10s. The bundled script may not have loaded correctly. Check browser console for errors.\n    at processUrl (file:///home/node/.excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:294:13)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:472:9)\n    at async main (file:///home/node/.excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:459:22)"
+  "timestamp": "2026-05-05T11:15:31.768Z",
+  "title": "Adani Green Energy (UP) Limited",
+  "template": "ageupl-homepage",
+  "blocks": [
+    "hero-ageupl",
+    "cards-leadership",
+    "columns-investor",
+    "cards-group-websites"
+  ]
 }

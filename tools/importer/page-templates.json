@@ -1,6 +1,39 @@
 {
   "templates": [
     {
+      "name": "ageupl-homepage",
+      "description": "Adani Green Energy UP homepage with hero, leadership cards, investor corner, and group websites",
+      "urls": [
+        "https://www.ageupl.com/"
+      ],
+      "blocks": [
+        {
+          "name": "hero-ageupl",
+          "instances": [
+            "section.banner-home-page"
+          ]
+        },
+        {
+          "name": "cards-leadership",
+          "instances": [
+            ".owl-carousel.leader--row-data"
+          ]
+        },
+        {
+          "name": "columns-investor",
+          "instances": [
+            ".row.d-flex.align-items-center.justify-content-center"
+          ]
+        },
+        {
+          "name": "cards-group-websites",
+          "instances": [
+            "#otherVentures"
+          ]
+        }
+      ]
+    },
+    {
       "name": "homepage",
       "description": "NPRPL homepage with hero banner and project details",
       "urls": [
