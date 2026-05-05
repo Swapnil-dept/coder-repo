@@ -1,0 +1,25 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "description": "NPRPL homepage with hero banner and project details",
+      "urls": [
+        "https://www.nprpl.com/"
+      ],
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "section.main-banner"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "section.main_content .row"
+          ]
+        }
+      ]
+    }
+  ]
+}
