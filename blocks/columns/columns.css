@@ -9,6 +9,7 @@
 
 .columns > div > div {
   order: 1;
+  margin-bottom: 16px;
 }
 
 .columns > div > .columns-img-col {
@@ -19,9 +20,21 @@
   display: block;
 }
 
+.columns h3 {
+  color: var(--heading-color, #2d73ae);
+  font-size: var(--heading-font-size-l);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.columns p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
 @media (width >= 900px) {
   .columns > div {
-    align-items: center;
+    align-items: flex-start;
     flex-direction: unset;
     gap: 24px;
   }
