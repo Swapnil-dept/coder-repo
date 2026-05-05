@@ -19,33 +19,35 @@ export default function parse(element, { document }) {
 
   const cells = [['Hero']];
 
-  const contentCell = document.createElement('div');
-
+  // Row 1 → field: image (reference)
+  const imageCell = document.createElement('div');
   if (img) {
-    const picture = document.createElement('picture');
     const imgEl = document.createElement('img');
     imgEl.src = img.src;
     imgEl.alt = img.alt || '';
-    picture.appendChild(imgEl);
-    contentCell.appendChild(picture);
+    imageCell.appendChild(imgEl);
   }
+  cells.push([imageCell]);
 
+  // Row 2 → field: imageAlt (text)
+  cells.push([img ? (img.alt || '') : '']);
+
+  // Row 3 → field: text (richtext)
+  const textCell = document.createElement('div');
   if (heading) {
     const h1 = document.createElement('h1');
     h1.textContent = heading.textContent.trim();
-    contentCell.appendChild(h1);
+    textCell.appendChild(h1);
   }
-
   if (link) {
     const p = document.createElement('p');
     const a = document.createElement('a');
     a.href = link.href;
     a.textContent = link.textContent.trim();
     p.appendChild(a);
-    contentCell.appendChild(p);
+    textCell.appendChild(p);
   }
-
-  cells.push([contentCell]);
+  cells.push([textCell]);
 
   const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
