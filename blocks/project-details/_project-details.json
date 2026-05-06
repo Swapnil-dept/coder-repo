@@ -29,7 +29,8 @@
             }
           }
         }
-      }
+      },
+       "groups": ["project-details"]
     }
   ],
   "models": [

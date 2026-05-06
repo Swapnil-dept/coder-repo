@@ -1,30 +1,17 @@
 export default function decorate(block) {
-  const slideElements = [...block.children];
-  if (!slideElements.length) return;
+  const rows = [...block.children];
+  if (!rows.length) return;
 
-  // Each child is a hero-slide component
-  const slides = slideElements.map((slideEl) => {
-    // Extract image from picture or img tag
-    const image = slideEl.querySelector('picture') || slideEl.querySelector('img');
-    
-    // Extract field values from data attributes or child divs
-    const getFieldValue = (fieldName) => {
-      const dataValue = slideEl.getAttribute(`data-${fieldName}`);
-      if (dataValue) return dataValue;
-      const childEl = slideEl.querySelector(`[data-${fieldName}]`);
-      if (childEl) return childEl.textContent.trim() || childEl.getAttribute(`data-${fieldName}`);
-      const byClass = slideEl.querySelector(`.${fieldName}`);
-      if (byClass) return byClass.textContent.trim();
-      return '';
-    };
-    
+  // Each row is a slide: [background-image, title, cta-text, cta-link]
+  const slides = rows.map((row) => {
+    const cells = [...row.children];
     return {
-      image,
-      title: getFieldValue('title'),
-      ctaText: getFieldValue('cta-text') || getFieldValue('ctaText'),
-      ctaLink: getFieldValue('cta-link') || getFieldValue('ctaLink') || slideEl.querySelector('a')?.href || '#',
+      image: cells[0]?.querySelector('picture') || cells[0]?.querySelector('img'),
+      title: cells[1]?.textContent.trim() || '',
+      ctaText: cells[2]?.textContent.trim() || '',
+      ctaLink: cells[3]?.querySelector('a')?.href || cells[3]?.textContent.trim() || '#',
     };
-  }).filter((slide) => slide.title || slide.image);
+  });
 
   block.textContent = '';
   block.classList.add('project-hero');
@@ -73,12 +60,12 @@ export default function decorate(block) {
     const prevBtn = document.createElement('button');
     prevBtn.className = 'project-hero-arrow project-hero-prev';
     prevBtn.setAttribute('aria-label', 'Previous slide');
-    prevBtn.innerHTML = '&#10094;';
+    prevBtn.textContent = '<<';
 
     const nextBtn = document.createElement('button');
     nextBtn.className = 'project-hero-arrow project-hero-next';
     nextBtn.setAttribute('aria-label', 'Next slide');
-    nextBtn.innerHTML = '&#10095;';
+    nextBtn.textContent = '>>';
 
     // Dots
     const dots = document.createElement('div');

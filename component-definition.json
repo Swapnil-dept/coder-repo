@@ -186,7 +186,10 @@
                 }
               }
             }
-          }
+          },
+          "groups": [
+            "project-details"
+          ]
         },
         {
           "title": "Project Hero",
@@ -217,7 +220,10 @@
                 }
               }
             }
-          }
+          },
+          "groups": [
+            "project-hero"
+          ]
         }
       ]
     }

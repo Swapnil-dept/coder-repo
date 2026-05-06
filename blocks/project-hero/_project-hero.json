@@ -29,7 +29,8 @@
             }
           }
         }
-      }
+      },
+      "groups": ["project-hero"]
     }
   ],
   "models": [
