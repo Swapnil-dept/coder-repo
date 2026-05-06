@@ -4,16 +4,19 @@ export default function decorate(block) {
 
   // Each row is a slide: [background-image, title, cta-text, cta-link]
   const slides = rows.map((row) => {
-    const cells = [...row.children];
-    return {
-      image: cells[0]?.querySelector('picture') || cells[0]?.querySelector('img'),
-      title: cells[1]?.textContent.trim() || '',
-      ctaText: cells[2]?.textContent.trim() || '',
-      ctaLink: cells[3]?.querySelector('a')?.href || cells[3]?.textContent.trim() || '#',
-    };
+  return {
+    image: row.querySelector('picture, img'),
+    title: row.querySelector('h1, h2, h3, h4, h5, h6, p')?.textContent?.trim() || '',
+    ctaText: row.querySelector('a')?.textContent?.trim() || '',
+    ctaLink: row.querySelector('a')?.href || '#',
+  };
   });
 
-  block.textContent = '';
+  const isAuthoring = window.location.pathname.includes('author');
+
+  if (!isAuthoring) {
+    block.textContent = '';
+  }
   block.classList.add('project-hero');
 
   // Carousel wrapper
