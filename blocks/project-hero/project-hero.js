@@ -60,12 +60,12 @@ export default function decorate(block) {
     const prevBtn = document.createElement('button');
     prevBtn.className = 'project-hero-arrow project-hero-prev';
     prevBtn.setAttribute('aria-label', 'Previous slide');
-    prevBtn.innerHTML = '&#10094;';
+    prevBtn.textContent = '◀';
 
     const nextBtn = document.createElement('button');
     nextBtn.className = 'project-hero-arrow project-hero-next';
     nextBtn.setAttribute('aria-label', 'Next slide');
-    nextBtn.innerHTML = '&#10095;';
+    nextBtn.textContent = '▶';
 
     // Dots
     const dots = document.createElement('div');

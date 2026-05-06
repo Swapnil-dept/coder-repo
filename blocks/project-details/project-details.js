@@ -11,7 +11,7 @@ export default function decorate(block) {
     const cells = [...row.children];
     return {
       label: cells[0]?.textContent.trim() || '',
-      value: cells[1]?.innerHTML.trim() || '',
+      value: cells[1]?.textContent.trim() || '',
     };
   });
 
@@ -38,7 +38,7 @@ export default function decorate(block) {
 
     const value = document.createElement('div');
     value.className = 'project-details-value';
-    value.innerHTML = item.value;
+    value.textContent = item.value;
 
     card.append(label, value);
     grid.append(card);
