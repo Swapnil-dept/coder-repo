@@ -15,7 +15,9 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "project-details",
+      "project-hero"
     ]
   },
   {
@@ -37,6 +39,18 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "project-details",
+    "components": [
+      "detail-item"
+    ]
+  },
+  {
+    "id": "project-hero",
+    "components": [
+      "hero-slide"
     ]
   }
 ]

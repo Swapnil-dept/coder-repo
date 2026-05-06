@@ -156,6 +156,68 @@
               }
             }
           }
+        },
+        {
+          "title": "Project Details",
+          "id": "project-details",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Project Details",
+                  "model": "project-details",
+                  "filter": "project-details"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Detail Item",
+          "id": "detail-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Detail Item",
+                  "model": "detail-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Project Hero",
+          "id": "project-hero",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Project Hero",
+                  "model": "project-hero",
+                  "filter": "project-hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero Slide",
+          "id": "hero-slide",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Hero Slide",
+                  "model": "hero-slide"
+                }
+              }
+            }
+          }
         }
       ]
     }
