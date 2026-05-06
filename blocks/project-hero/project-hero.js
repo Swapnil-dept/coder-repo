@@ -1,17 +1,16 @@
 export default function decorate(block) {
-  const rows = [...block.children];
-  if (!rows.length) return;
+  const children = [...block.children];
+  if (!children.length) return;
 
-  // Each row is a slide: [background-image, title, cta-text, cta-link]
-  const slides = rows.map((row) => {
-    const cells = [...row.children];
+  // Each child is a hero-slide component
+  const slides = children.map((slide) => {
     return {
-      image: cells[0]?.querySelector('picture') || cells[0]?.querySelector('img'),
-      title: cells[1]?.textContent.trim() || '',
-      ctaText: cells[2]?.textContent.trim() || '',
-      ctaLink: cells[3]?.querySelector('a')?.href || cells[3]?.textContent.trim() || '#',
+      image: slide.querySelector('picture') || slide.querySelector('img'),
+      title: slide.getAttribute('data-title') || slide.querySelector('[data-title]')?.textContent.trim() || '',
+      ctaText: slide.getAttribute('data-cta-text') || slide.querySelector('[data-cta-text]')?.textContent.trim() || '',
+      ctaLink: slide.getAttribute('data-cta-link') || slide.querySelector('a')?.href || slide.querySelector('[data-cta-link]')?.textContent.trim() || '#',
     };
-  });
+  }).filter((slide) => slide.title || slide.image);
 
   block.textContent = '';
   block.classList.add('project-hero');
