@@ -1,19 +1,28 @@
 export default function decorate(block) {
-  const rows = [...block.children];
-  if (!rows.length) return;
+  const itemElements = [...block.children];
+  if (!itemElements.length) return;
 
-  // First row = block config: [sectionTitle]
-  const configCells = [...rows[0].children];
-  const sectionTitle = configCells[0]?.textContent.trim() || 'Project Details';
+  // Extract section title from block data attribute or use default
+  const sectionTitle = block.getAttribute('data-section-title') || 'Project Details';
 
-  // Remaining rows = detail items: [label, value]
-  const items = rows.slice(1).map((row) => {
-    const cells = [...row.children];
-    return {
-      label: cells[0]?.textContent.trim() || '',
-      value: cells[1]?.textContent.trim() || '',
+  // Each child is a detail-item component
+  const items = itemElements.map((itemEl) => {
+    // Extract field values from data attributes or child elements
+    const getFieldValue = (fieldName) => {
+      const dataValue = itemEl.getAttribute(`data-${fieldName}`);
+      if (dataValue) return dataValue;
+      const childEl = itemEl.querySelector(`[data-${fieldName}]`);
+      if (childEl) return childEl.textContent.trim() || childEl.getAttribute(`data-${fieldName}`);
+      const byClass = itemEl.querySelector(`.${fieldName}`);
+      if (byClass) return byClass.textContent.trim();
+      return '';
     };
-  });
+    
+    return {
+      label: getFieldValue('label'),
+      value: getFieldValue('value'),
+    };
+  }).filter((item) => item.label && item.value);
 
   block.textContent = '';
   block.classList.add('project-details');

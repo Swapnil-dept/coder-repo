@@ -1,14 +1,28 @@
 export default function decorate(block) {
-  const children = [...block.children];
-  if (!children.length) return;
+  const slideElements = [...block.children];
+  if (!slideElements.length) return;
 
   // Each child is a hero-slide component
-  const slides = children.map((slide) => {
+  const slides = slideElements.map((slideEl) => {
+    // Extract image from picture or img tag
+    const image = slideEl.querySelector('picture') || slideEl.querySelector('img');
+    
+    // Extract field values from data attributes or child divs
+    const getFieldValue = (fieldName) => {
+      const dataValue = slideEl.getAttribute(`data-${fieldName}`);
+      if (dataValue) return dataValue;
+      const childEl = slideEl.querySelector(`[data-${fieldName}]`);
+      if (childEl) return childEl.textContent.trim() || childEl.getAttribute(`data-${fieldName}`);
+      const byClass = slideEl.querySelector(`.${fieldName}`);
+      if (byClass) return byClass.textContent.trim();
+      return '';
+    };
+    
     return {
-      image: slide.querySelector('picture') || slide.querySelector('img'),
-      title: slide.getAttribute('data-title') || slide.querySelector('[data-title]')?.textContent.trim() || '',
-      ctaText: slide.getAttribute('data-cta-text') || slide.querySelector('[data-cta-text]')?.textContent.trim() || '',
-      ctaLink: slide.getAttribute('data-cta-link') || slide.querySelector('a')?.href || slide.querySelector('[data-cta-link]')?.textContent.trim() || '#',
+      image,
+      title: getFieldValue('title'),
+      ctaText: getFieldValue('cta-text') || getFieldValue('ctaText'),
+      ctaLink: getFieldValue('cta-link') || getFieldValue('ctaLink') || slideEl.querySelector('a')?.href || '#',
     };
   }).filter((slide) => slide.title || slide.image);
 
@@ -59,12 +73,12 @@ export default function decorate(block) {
     const prevBtn = document.createElement('button');
     prevBtn.className = 'project-hero-arrow project-hero-prev';
     prevBtn.setAttribute('aria-label', 'Previous slide');
-    prevBtn.textContent = '◀';
+    prevBtn.innerHTML = '&#10094;';
 
     const nextBtn = document.createElement('button');
     nextBtn.className = 'project-hero-arrow project-hero-next';
     nextBtn.setAttribute('aria-label', 'Next slide');
-    nextBtn.textContent = '▶';
+    nextBtn.innerHTML = '&#10095;';
 
     // Dots
     const dots = document.createElement('div');
