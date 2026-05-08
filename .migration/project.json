@@ -1,4 +1,6 @@
 {
   "type": "xwalk",
-  "contentHostUrl": "author-p48457-e1275402.adobeaemcloud.com"
+  "contentHostUrl": "author-p48457-e1275402.adobeaemcloud.com",
+  "previewOrg": "swapnil-dept",
+  "previewSite": "coder-repo"
 }
