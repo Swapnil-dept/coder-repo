@@ -1,0 +1,87 @@
+.cards-gallery > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.cards-gallery > ul > li {
+  border: 1px solid #dadada;
+  background-color: var(--background-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-gallery .cards-gallery-image {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.cards-gallery .cards-gallery-image picture {
+  display: block;
+}
+
+.cards-gallery .cards-gallery-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cards-gallery > ul > li:hover .cards-gallery-image img {
+  transform: scale(1.05);
+}
+
+.cards-gallery .cards-gallery-body {
+  padding: 16px;
+  flex: 1;
+}
+
+/* Lightbox overlay */
+.cards-gallery-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 80%);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-gallery-overlay.is-open {
+  display: flex;
+}
+
+.cards-gallery-overlay-img {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.cards-gallery-overlay-img img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.cards-gallery-overlay-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+@media (min-width: 900px) {
+  .cards-gallery > ul {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+}
