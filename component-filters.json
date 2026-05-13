@@ -23,7 +23,8 @@
       "atdw-amenities",
       "atdw-contacts",
       "atdw-map",
-      "atdw-reviews"
+      "atdw-reviews",
+      "carousel"
     ]
   },
   {
@@ -42,6 +43,12 @@
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "carousel-item"
     ]
   },
   {
