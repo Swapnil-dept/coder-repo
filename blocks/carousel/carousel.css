@@ -235,10 +235,13 @@
   overflow: visible;
 }
 
+.carousel-card-image {
+  overflow: hidden;
+}
+
 .card-carousel .carousel-card-media picture {
   display: block;
   width: 100%;
-  overflow: hidden;
 }
 
 .card-carousel .carousel-card-media picture img {
@@ -261,6 +264,8 @@
   padding: 4px 12px;
   border-radius: 2px;
   letter-spacing: 0.5px;
+  width: auto;
+  display: inline-block;
 }
 
 .carousel-card-badge {
@@ -327,6 +332,10 @@
   margin-top: auto;
 }
 
+.carousel-card-btn-wrap {
+  display: inline-block;
+}
+
 .carousel-card-btn {
   display: inline-block;
   padding: 12px 24px;
@@ -380,4 +389,15 @@
   .card-carousel .carousel-wrapper > .swiper-pagination {
     width: 200px;
   }
+}
+
+.section.card-carousel.carousel-container .default-content-wrapper {
+  text-align: center;
+
+}
+
+.section.card-carousel.carousel-container .default-content-wrapper h2 {
+  font-size: 50px; 
+  margin-bottom: 16px;
+  font-weight: 700;
 }

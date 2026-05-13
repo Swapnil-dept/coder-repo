@@ -13,13 +13,12 @@ function createSwiper(block) {
 
         if (isCardCarousel(block)) {
             rows.forEach((row) => {
+                decorateCard(row);
                 const slide = document.createElement('div');
                 slide.classList.add('swiper-slide');
-                slide.appendChild(buildCard(row));
+                slide.appendChild(row);
                 swiperWrapper.append(slide);
             });
-            // Remove original unprocessed rows from DOM
-            rows.forEach((row) => row.remove());
         } else {
             rows.forEach((row) => {
                 row.classList.add('swiper-slide');
@@ -32,106 +31,101 @@ function createSwiper(block) {
 }
 
 /**
- * Build a card element from a carousel-card-item row.
- * AEM EDS merges imageAlt into image cell (as alt attr), so actual cells:
+ * Decorate an existing carousel-card-item row into a card layout,
+ * preserving all data-aue-* attributes for Universal Editor support.
+ *
+ * Cell indices (AEM EDS merges imageAlt into image cell as alt attr):
  * 0=image, 1=categoryLabel, 2=badgeImage, 3=title,
  * 4=description, 5=goToSiteLink, 6=goToSiteText,
  * 7=viewMoreLink, 8=viewMoreText, 9=wishlistImage
  */
-function buildCard(row) {
+function decorateCard(row) {
     const cells = [...row.children];
-    const getText = (i) => cells[i]?.textContent?.trim() || '';
-    const getLink = (i) => {
-        const a = cells[i]?.querySelector('a');
-        return a ? a.href : getText(i);
-    };
+    row.classList.add('carousel-card');
 
-    const card = document.createElement('article');
-    card.classList.add('carousel-card');
-
-    // -- Image wrapper --
+    // -- Media wrapper: group cells 0, 1, 2 --
     const mediaWrap = document.createElement('div');
     mediaWrap.classList.add('carousel-card-media');
 
-    const picture = cells[0]?.querySelector('picture');
-    if (picture) mediaWrap.appendChild(picture);
-
-    const categoryLabel = getText(1);
-    if (categoryLabel) {
-        const tag = document.createElement('span');
-        tag.classList.add('carousel-card-tag');
-        tag.textContent = categoryLabel;
-        mediaWrap.appendChild(tag);
+    if (cells[0]) {
+        cells[0].classList.add('carousel-card-image');
+        mediaWrap.appendChild(cells[0]);
+    }
+    if (cells[1]) {
+        cells[1].classList.add('carousel-card-tag');
+        mediaWrap.appendChild(cells[1]);
+    }
+    if (cells[2]) {
+        cells[2].classList.add('carousel-card-badge');
+        mediaWrap.appendChild(cells[2]);
     }
 
-    const badgePic = cells[2]?.querySelector('picture');
-    if (badgePic) {
-        const badgeWrap = document.createElement('span');
-        badgeWrap.classList.add('carousel-card-badge');
-        badgeWrap.appendChild(badgePic);
-        mediaWrap.appendChild(badgeWrap);
+    // -- Content wrapper: group cells 3-9 --
+    const contentWrap = document.createElement('div');
+    contentWrap.classList.add('carousel-card-content');
+
+    if (cells[3]) {
+        cells[3].classList.add('carousel-card-title');
+        contentWrap.appendChild(cells[3]);
+    }
+    if (cells[4]) {
+        cells[4].classList.add('carousel-card-desc');
+        contentWrap.appendChild(cells[4]);
+    }
+    if (cells[9]) {
+        cells[9].classList.add('carousel-card-heart');
+        contentWrap.appendChild(cells[9]);
     }
 
-    card.appendChild(mediaWrap);
-
-    // -- Content --
-    const content = document.createElement('div');
-    content.classList.add('carousel-card-content');
-
-    const title = getText(3);
-    if (title) {
-        const h3 = document.createElement('h3');
-        h3.classList.add('carousel-card-title');
-        h3.textContent = title;
-        content.appendChild(h3);
-    }
-
-    const descHTML = cells[4]?.innerHTML?.trim() || '';
-    if (descHTML) {
-        const desc = document.createElement('div');
-        desc.classList.add('carousel-card-desc');
-        desc.innerHTML = descHTML;
-        content.appendChild(desc);
-    }
-
-    // Wishlist image
-    const wishlistPic = cells[9]?.querySelector('picture');
-    if (wishlistPic) {
-        const wishlistWrap = document.createElement('span');
-        wishlistWrap.classList.add('carousel-card-heart');
-        wishlistWrap.setAttribute('aria-label', 'Add to wishlist');
-        wishlistWrap.appendChild(wishlistPic);
-        content.appendChild(wishlistWrap);
-    }
-
-    // Buttons
+    // -- Buttons wrapper --
     const btnWrap = document.createElement('div');
     btnWrap.classList.add('carousel-card-buttons');
 
-    const goToSiteLink = getLink(5);
-    const goToSiteText = getText(6) || 'GO TO SITE';
-    if (goToSiteLink) {
-        const a = document.createElement('a');
-        a.classList.add('carousel-card-btn', 'carousel-card-btn-primary');
-        a.href = goToSiteLink;
-        a.textContent = goToSiteText;
-        btnWrap.appendChild(a);
+    // Go To Site button (cell 5 = URL, cell 6 = label)
+    if (cells[5]) {
+        const url = cells[5].textContent.trim();
+        const text = cells[6]?.textContent?.trim() || 'GO TO SITE';
+        if (url) {
+            const a = document.createElement('a');
+            a.classList.add('carousel-card-btn', 'carousel-card-btn-primary');
+            a.href = url;
+            a.textContent = text;
+            cells[5].textContent = '';
+            cells[5].appendChild(a);
+        }
+        cells[5].classList.add('carousel-card-btn-wrap');
+        btnWrap.appendChild(cells[5]);
+    }
+    if (cells[6]) {
+        cells[6].style.display = 'none';
+        btnWrap.appendChild(cells[6]);
     }
 
-    const viewMoreLink = getLink(7);
-    const viewMoreText = getText(8) || 'VIEW MORE';
-    if (viewMoreLink) {
-        const a = document.createElement('a');
-        a.classList.add('carousel-card-btn', 'carousel-card-btn-outline');
-        a.href = viewMoreLink;
-        a.textContent = viewMoreText;
-        btnWrap.appendChild(a);
+    // View More button (cell 7 = URL, cell 8 = label)
+    if (cells[7]) {
+        const url = cells[7].textContent.trim();
+        const text = cells[8]?.textContent?.trim() || 'VIEW MORE';
+        if (url) {
+            const a = document.createElement('a');
+            a.classList.add('carousel-card-btn', 'carousel-card-btn-outline');
+            a.href = url;
+            a.textContent = text;
+            cells[7].textContent = '';
+            cells[7].appendChild(a);
+        }
+        cells[7].classList.add('carousel-card-btn-wrap');
+        btnWrap.appendChild(cells[7]);
+    }
+    if (cells[8]) {
+        cells[8].style.display = 'none';
+        btnWrap.appendChild(cells[8]);
     }
 
-    content.appendChild(btnWrap);
-    card.appendChild(content);
+    contentWrap.appendChild(btnWrap);
 
-    return card;
+    // Append wrappers to row (all cells already moved into them)
+    row.appendChild(mediaWrap);
+    row.appendChild(contentWrap);
 }
 
 function swiperInit(block) {
@@ -243,7 +237,6 @@ export function initSwiperOnly(block) {
 
 
 export default function decorate(block) {
-    if(window.location.href.includes("author")) return; // Skip initialization in AEM editor preview to avoid conflicts with React-based carousel
     const isDesktop = window.matchMedia('(min-width: 900px)');
 
     createSwiper(block);
