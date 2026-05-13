@@ -1,0 +1,104 @@
+/* Block: atdw-hero */
+.atdw-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Gallery */
+.atdw-hero-gallery {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.atdw-hero-gallery-track {
+  display: flex;
+  transition: transform 0.4s ease;
+  height: 100%;
+}
+
+.atdw-hero-gallery-slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.atdw-hero-gallery-slide picture,
+.atdw-hero-gallery-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Prev / Next buttons */
+.atdw-hero-gallery-prev,
+.atdw-hero-gallery-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgb(0 0 0 / 40%);
+  color: var(--background-color, #fff);
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 0.5rem 0.75rem;
+  z-index: 2;
+  border-radius: var(--border-radius, 4px);
+}
+
+.atdw-hero-gallery-prev { left: 0.5rem; }
+.atdw-hero-gallery-next { right: 0.5rem; }
+
+/* Dots */
+.atdw-hero-gallery-dots {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.4rem;
+  z-index: 2;
+}
+
+.atdw-hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgb(255 255 255 / 60%);
+  cursor: pointer;
+  padding: 0;
+}
+
+.atdw-hero-dot.active {
+  background: var(--background-color, #fff);
+}
+
+/* Title */
+.atdw-hero-title {
+  padding: 1rem var(--spacing-m, 1rem);
+  font-size: var(--heading-font-size-l, 1.75rem);
+  font-weight: 700;
+  color: var(--text-color, #333);
+}
+
+.atdw-hero-title h1,
+.atdw-hero-title h2 {
+  margin: 0;
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+  .atdw-hero-gallery {
+    aspect-ratio: 16 / 7;
+  }
+
+  .atdw-hero-title {
+    padding: 1.5rem 2rem;
+    font-size: var(--heading-font-size-xl, 2.5rem);
+  }
+}

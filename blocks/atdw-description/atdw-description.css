@@ -1,0 +1,37 @@
+/* Block: atdw-description */
+.atdw-description {
+  padding: var(--spacing-l, 2rem) var(--spacing-m, 1rem);
+}
+
+.atdw-description-text {
+  max-height: 6.5em; /* ~4 lines */
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  line-height: 1.6;
+  color: var(--text-color, #555);
+}
+
+.atdw-description-text.expanded {
+  max-height: 100vh;
+}
+
+.atdw-description-text p {
+  margin: 0 0 0.75em;
+}
+
+.atdw-description-toggle {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--link-color, #00817d);
+  font-weight: 600;
+  font-size: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.atdw-description-toggle:hover {
+  color: var(--link-hover-color, #005f5c);
+}

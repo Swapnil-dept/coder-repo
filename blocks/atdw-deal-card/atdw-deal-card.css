@@ -1,0 +1,79 @@
+/* Block: atdw-deal-card */
+.atdw-deal-card {
+  padding: var(--spacing-l, 2rem) var(--spacing-m, 1rem);
+  background: var(--light-color, #f8f8f8);
+}
+
+.atdw-deal-card-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.atdw-deal-card-badge {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border: 2px solid var(--highlight-color, #e63946);
+  color: var(--highlight-color, #e63946);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.atdw-deal-card-title {
+  font-size: var(--heading-font-size-l, 1.75rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-color, #333f48);
+  margin: 0;
+}
+
+.atdw-deal-card-description {
+  color: var(--text-color, #555);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.atdw-deal-card-conditions {
+  font-weight: 700;
+  color: var(--text-color, #333f48);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.atdw-deal-card-date {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--text-color, #333f48);
+  margin: 0;
+}
+
+.atdw-deal-card-cta {
+  display: inline-block;
+  align-self: center;
+  margin-top: 0.5rem;
+  padding: 0.85rem 2rem;
+  background-color: var(--link-color, #00817d);
+  color: var(--background-color, #fff);
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background-color 0.2s;
+}
+
+.atdw-deal-card-cta:hover {
+  background-color: var(--link-hover-color, #005f5c);
+}
+
+@media (min-width: 900px) {
+  .atdw-deal-card-title {
+    font-size: var(--heading-font-size-xl, 2.25rem);
+  }
+}

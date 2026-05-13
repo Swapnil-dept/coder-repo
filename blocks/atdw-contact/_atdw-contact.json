@@ -1,0 +1,63 @@
+{
+  "definitions": [
+    {
+      "title": "ATDW Contact",
+      "id": "atdw-contact",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "ATDW Contact",
+              "model": "atdw-contact"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "atdw-contact",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "heading",
+          "label": "Section Heading"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "websiteUrl",
+          "label": "Website URL"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "email",
+          "label": "Email Address"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "phone",
+          "label": "Phone Number"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "instagram",
+          "label": "Instagram URL"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "facebook",
+          "label": "Facebook URL"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

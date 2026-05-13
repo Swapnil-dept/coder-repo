@@ -113,6 +113,126 @@
           }
         },
         {
+          "title": "ATDW Amenities",
+          "id": "atdw-amenities",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "ATDW Amenities",
+                  "model": "atdw-amenities"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "ATDW Carousel",
+          "id": "atdw-carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "ATDW Carousel",
+                  "model": "atdw-carousel"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "ATDW Contact",
+          "id": "atdw-contact",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "ATDW Contact",
+                  "model": "atdw-contact"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "ATDW Deal Card",
+          "id": "atdw-deal-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "ATDW Deal Card",
+                  "model": "atdw-deal-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "ATDW Description",
+          "id": "atdw-description",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "ATDW Description",
+                  "model": "atdw-description"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "ATDW Hero",
+          "id": "atdw-hero",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "ATDW Hero",
+                  "model": "atdw-hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "ATDW Map",
+          "id": "atdw-map",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "ATDW Map",
+                  "model": "atdw-map"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "ATDW Rooms",
+          "id": "atdw-rooms",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "ATDW Rooms",
+                  "model": "atdw-rooms"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards Gallery",
           "id": "cards-gallery",
           "plugins": {

@@ -1,0 +1,47 @@
+/* Block: atdw-map */
+.atdw-map {
+  padding: var(--spacing-l, 2rem) var(--spacing-m, 1rem);
+  border-top: 1px solid var(--border-color, #e8e8e8);
+}
+
+.atdw-map-canvas {
+  width: 100%;
+  height: 320px;
+  background: var(--light-color, #f0f0f0);
+  overflow: hidden;
+}
+
+.atdw-map-static {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.atdw-map-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 0;
+}
+
+.atdw-map-name {
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-color, #333f48);
+  margin: 0;
+}
+
+.atdw-map-address {
+  color: var(--text-color, #555);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (min-width: 900px) {
+  .atdw-map-canvas {
+    height: 400px;
+  }
+}

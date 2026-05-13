@@ -1,0 +1,70 @@
+/* Block: atdw-amenities */
+.atdw-amenities {
+  padding: var(--spacing-l, 2rem) var(--spacing-m, 1rem);
+  border-top: 1px solid var(--border-color, #e8e8e8);
+}
+
+.atdw-amenities-heading {
+  font-size: var(--heading-font-size-m, 1.25rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-color, #333f48);
+  margin: 0 0 1.5rem;
+}
+
+.atdw-amenities-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1rem;
+}
+
+.atdw-amenities-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.atdw-amenities-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--text-color, #333f48);
+}
+
+.atdw-amenities-icon img,
+.atdw-amenities-icon picture {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.atdw-amenities-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-color, #333f48);
+}
+
+.atdw-amenities-desc {
+  font-size: 0.8rem;
+  color: var(--text-color, #666);
+  line-height: 1.4;
+}
+
+@media (min-width: 600px) {
+  .atdw-amenities-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .atdw-amenities-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

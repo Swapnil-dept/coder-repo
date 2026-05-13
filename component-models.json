@@ -159,6 +159,262 @@
     ]
   },
   {
+    "id": "atdw-amenities",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Section Heading"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "name",
+        "label": "Amenity Name"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Amenity Description"
+      }
+    ]
+  },
+  {
+    "id": "atdw-carousel",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Section Heading"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Card Image"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "category",
+        "label": "Card Category"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Card Title"
+      },
+      {
+        "component": "textarea",
+        "valueType": "string",
+        "name": "description",
+        "label": "Card Description"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "link",
+        "label": "Card Link URL"
+      }
+    ]
+  },
+  {
+    "id": "atdw-contact",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Section Heading"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "websiteUrl",
+        "label": "Website URL"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "email",
+        "label": "Email Address"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "phone",
+        "label": "Phone Number"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "facebook",
+        "label": "Facebook URL"
+      }
+    ]
+  },
+  {
+    "id": "atdw-deal-card",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "dealType",
+        "label": "Deal Type Badge"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Deal Title"
+      },
+      {
+        "component": "textarea",
+        "valueType": "string",
+        "name": "description",
+        "label": "Deal Description"
+      },
+      {
+        "component": "textarea",
+        "valueType": "string",
+        "name": "conditions",
+        "label": "Conditions"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "saleEndDate",
+        "label": "Sale End Date"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLabel",
+        "label": "CTA Button Label"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaUrl",
+        "label": "CTA Button URL"
+      }
+    ]
+  },
+  {
+    "id": "atdw-description",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Property Description"
+      }
+    ]
+  },
+  {
+    "id": "atdw-hero",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "galleryImages",
+        "label": "Gallery Images"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Property Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "breadcrumb",
+        "label": "Breadcrumb Path"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "boqeImage",
+        "label": "Best of Queensland Badge"
+      }
+    ]
+  },
+  {
+    "id": "atdw-map",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "propertyName",
+        "label": "Property Name"
+      },
+      {
+        "component": "textarea",
+        "valueType": "string",
+        "name": "address",
+        "label": "Address"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "latitude",
+        "label": "Latitude"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "longitude",
+        "label": "Longitude"
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "zoom",
+        "label": "Zoom Level"
+      }
+    ]
+  },
+  {
+    "id": "atdw-rooms",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Section Heading"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "roomName",
+        "label": "Room Name"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "images",
+        "label": "Room Images"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Room Description"
+      }
+    ]
+  },
+  {
     "id": "cards-gallery-item",
     "fields": [
       {

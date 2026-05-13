@@ -1,0 +1,153 @@
+/* Block: atdw-carousel */
+.atdw-carousel {
+  padding: var(--spacing-l, 2rem) var(--spacing-m, 1rem);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border-color, #e8e8e8);
+}
+
+.atdw-carousel-heading {
+  font-size: var(--heading-font-size-m, 1.25rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-color, #333f48);
+  margin: 0 0 1.5rem;
+}
+
+/* Nav */
+.atdw-carousel-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.atdw-carousel-prev,
+.atdw-carousel-next {
+  background: var(--light-color, #f0f0f0);
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color, #333f48);
+  transition: background-color 0.2s;
+}
+
+.atdw-carousel-prev:hover,
+.atdw-carousel-next:hover {
+  background: var(--border-color, #d0d0d0);
+}
+
+/* Track */
+.atdw-carousel-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 0.5rem;
+}
+
+.atdw-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card */
+.atdw-carousel-card {
+  flex: 0 0 calc(100% - 1rem);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--border-radius, 4px);
+  overflow: hidden;
+  background: var(--background-color, #fff);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.atdw-carousel-card-media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.atdw-carousel-card-media picture,
+.atdw-carousel-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.atdw-carousel-card-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.atdw-carousel-card-category {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: var(--link-color, #00817d);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.atdw-carousel-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-color, #333f48);
+  margin: 0;
+}
+
+.atdw-carousel-card-desc {
+  font-size: 0.875rem;
+  color: var(--text-color, #666);
+  line-height: 1.5;
+  margin: 0;
+  /* Clamp to 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.atdw-carousel-card-link {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--link-color, #00817d);
+  text-decoration: none;
+}
+
+.atdw-carousel-card-link:hover {
+  text-decoration: underline;
+}
+
+/* Show 2 cards on tablet */
+@media (min-width: 600px) {
+  .atdw-carousel-card {
+    flex: 0 0 calc(50% - 0.5rem);
+  }
+}
+
+/* Show 3 cards on desktop */
+@media (min-width: 900px) {
+  .atdw-carousel-card {
+    flex: 0 0 calc(33.333% - 0.667rem);
+  }
+}

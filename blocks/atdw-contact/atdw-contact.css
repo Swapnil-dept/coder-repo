@@ -1,0 +1,60 @@
+/* Block: atdw-contact */
+.atdw-contact {
+  padding: var(--spacing-l, 2rem) var(--spacing-m, 1rem);
+  border-top: 1px solid var(--border-color, #e8e8e8);
+}
+
+.atdw-contact-heading {
+  font-size: var(--heading-font-size-s, 1.25rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-color, #333f48);
+  margin: 0 0 1.5rem;
+}
+
+.atdw-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.atdw-contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: var(--text-color, #333f48);
+  font-size: 0.875rem;
+}
+
+.atdw-contact-item:hover {
+  color: var(--link-hover-color, #00817d);
+}
+
+/* Icon placeholders — replaced at build time with actual SVG sprites */
+.atdw-contact-icon {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-website  { background-image: url('/icons/globe.svg'); }
+.icon-email    { background-image: url('/icons/email.svg'); }
+.icon-phone    { background-image: url('/icons/phone.svg'); }
+.icon-instagram { background-image: url('/icons/instagram.svg'); }
+.icon-facebook  { background-image: url('/icons/facebook.svg'); }
+
+.atdw-contact-label {
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  .atdw-contact-links {
+    gap: 2.5rem;
+  }
+}
