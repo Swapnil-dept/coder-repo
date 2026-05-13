@@ -156,10 +156,31 @@
         },
         {
           "component": "text",
+          "name": "goToSiteText",
+          "value": "GO TO SITE",
+          "label": "Go To Site Button Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
           "name": "viewMoreLink",
           "value": "",
           "label": "View More URL",
           "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "viewMoreText",
+          "value": "VIEW MORE",
+          "label": "View More Button Text",
+          "valueType": "string"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "wishlistImage",
+          "label": "Wishlist Image",
+          "multi": false
         }
       ]
     }
