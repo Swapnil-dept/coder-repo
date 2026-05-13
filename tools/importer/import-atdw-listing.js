@@ -141,12 +141,12 @@ export default {
    * Transform an ATDW listing page (e.g. queensland.com accommodation detail)
    * into EDS-ready block tables.
    *
-   * Each block becomes a separate EDS section separated by <hr>.
-   * Parsers return their table directly — the source DOM is not modified.
+   * Each block table is appended to document.body (the required output element),
+   * separated by <hr> EDS section breaks.
    *
    * NOTE: The source page is JS-rendered (React SPA). Run this importer
    * AFTER the browser has fully hydrated the page, e.g. via the Helix
-   * Importer CLI with `--wait-for-selector "#atdw-template"`.
+   * Importer UI which renders pages in an iframe before calling transform.
    */
   transform: ({ document, url, params }) => {
     const report = { url, blocks: [] };
@@ -157,8 +157,8 @@ export default {
     // 2. Find the ATDW template container
     const atdwRoot = document.getElementById('atdw-template') || document.body;
 
-    // 3. Build a clean output element — one EDS section per block
-    const main = document.createElement('div');
+    // 3. Collect block tables — parsers return tables without modifying source DOM
+    const tables = [];
 
     BLOCK_DEFINITIONS.forEach(({ name, selectors, description }) => {
       selectors.forEach((selector) => {
@@ -178,13 +178,7 @@ export default {
 
         try {
           const table = parser(element, { document, url, params });
-          if (table) {
-            // Add <hr> section separator before every block (EDS section break)
-            if (main.children.length > 0) {
-              main.appendChild(document.createElement('hr'));
-            }
-            main.appendChild(table);
-          }
+          if (table) tables.push(table);
           report.blocks.push({ name, selector, status: 'ok', description });
         } catch (e) {
           console.error(`[import-atdw-listing] Parser "${name}" failed:`, e);
@@ -193,15 +187,24 @@ export default {
       });
     });
 
-    // 4. Append metadata block as the last section
+    // 4. Replace document.body content with the collected block tables.
+    //    WebImporter serialises document.body — it must be the output element.
+    document.body.innerHTML = '';
+    tables.forEach((table, i) => {
+      if (i > 0) document.body.appendChild(document.createElement('hr'));
+      document.body.appendChild(table);
+    });
+
+    // 5. Metadata block (always last section)
     const meta = buildMetadata(document);
-    main.appendChild(document.createElement('hr'));
-    WebImporter.rules.createMetadata(main, document, meta);
+    document.body.appendChild(document.createElement('hr'));
+    WebImporter.rules.createMetadata(document.body, document, meta);
 
-    // 5. Standard EDS image adjustments on the assembled output
-    WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
+    // 6. Standard EDS image adjustments
+    WebImporter.rules.transformBackgroundImages(document.body, document);
+    WebImporter.rules.adjustImageUrls(document.body, url, params.originalURL);
 
-    // 6. Generate output path (mirrors source URL path)
+    // 7. Generate output path (mirrors source URL path)
     const path = WebImporter.FileUtils.sanitizePath(
       new URL(params.originalURL || url).pathname
         .replace(/\/$/, '')
@@ -210,7 +213,7 @@ export default {
     );
 
     return [{
-      element: main,
+      element: document.body,
       path,
       report,
     }];

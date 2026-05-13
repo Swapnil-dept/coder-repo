@@ -16,7 +16,14 @@
       "cards",
       "columns",
       "fragment",
-      "tabs-card"
+      "tabs-card",
+      "atdw-carousel",
+      "atdw-rooms",
+      "atdw-description",
+      "atdw-amenities",
+      "atdw-contacts",
+      "atdw-map",
+      "atdw-reviews"
     ]
   },
   {
