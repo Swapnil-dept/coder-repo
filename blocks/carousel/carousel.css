@@ -1,0 +1,125 @@
+/* Banner Carousel section overrides */
+.banner-carousel {
+  margin: 0;
+  padding: 0;
+}
+
+.banner-carousel .carousel-wrapper {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.banner-carousel .carousel.block {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.banner-carousel .carousel .swiper-wrapper {
+  display: flex;
+  position: relative;
+}
+
+.banner-carousel .carousel .swiper-slide {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.banner-carousel .carousel .swiper-slide > div:first-child {
+  width: 100%;
+}
+
+.banner-carousel .carousel .swiper-slide > div:last-child {
+  display: none;
+}
+
+.banner-carousel .carousel .swiper-slide picture {
+  display: block;
+  width: 100%;
+}
+
+.banner-carousel .carousel .swiper-slide picture img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+/* Navigation arrows */
+.banner-carousel .carousel .swiper-button-next,
+.banner-carousel .carousel .swiper-button-prev {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  background-color: rgb(93 117 117 / 60%);
+  border: 1px solid rgb(255 255 255 / 30%);
+  border-radius: 4px;
+  color: #fff;
+  top: calc(50% - 22px);
+  margin-top: 0;
+  z-index: 10;
+}
+
+.banner-carousel .carousel .swiper-button-next::after,
+.banner-carousel .carousel .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.banner-carousel .carousel .swiper-button-prev {
+  left: 16px;
+}
+
+.banner-carousel .carousel .swiper-button-next {
+  right: 16px;
+}
+
+.banner-carousel .carousel .swiper-button-next.swiper-button-disabled,
+.banner-carousel .carousel .swiper-button-prev.swiper-button-disabled {
+  opacity: 0.5;
+}
+
+/* Pagination (segmented bar indicators) */
+.banner-carousel .carousel-wrapper > .swiper-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  width: 280px;
+  margin: 16px auto 0;
+}
+
+.banner-carousel .carousel-wrapper > .swiper-pagination .swiper-pagination-bullet {
+  flex: 1;
+  height: 2px;
+  border-radius: 0;
+  background: #d9dde3;
+  opacity: 1;
+}
+
+.banner-carousel .carousel-wrapper > .swiper-pagination .swiper-pagination-bullet-active {
+  background: #2d3c3c;
+  height: 3px;
+}
+
+@media (width < 600px) {
+  .banner-carousel .carousel .swiper-button-next,
+  .banner-carousel .carousel .swiper-button-prev {
+    width: 36px;
+    height: 36px;
+    margin-top: -18px;
+  }
+
+  .banner-carousel .carousel .swiper-button-next::after,
+  .banner-carousel .carousel .swiper-button-prev::after {
+    font-size: 14px;
+  }
+
+  .banner-carousel .carousel-wrapper > .swiper-pagination {
+    width: 200px;
+  }
+}
