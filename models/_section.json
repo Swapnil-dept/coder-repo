@@ -33,6 +33,14 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Banner Carousel",
+              "value": "banner-carousel"
+            },
+             {
+              "name": "Card Carousel",
+              "value": "card-carousel"
             }
           ]
         }
@@ -60,7 +68,7 @@
         "atdw-map",
         "atdw-reviews",
         "carousel"
-        
+
       ]
     }
   ]
