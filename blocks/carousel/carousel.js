@@ -6,6 +6,7 @@ function isCardCarousel(block) {
 
 function createSwiper(block) {
     if (!block.classList.contains('swiper')) {
+        block.classList.add('swiper');
         const rows = Array.from(block.children);
         const swiperWrapper = document.createElement('div');
         swiperWrapper.classList.add('swiper-wrapper');
@@ -140,12 +141,18 @@ function swiperInit(block) {
     prevBtn.classList.add('swiper-button-prev');
     const pagination = document.createElement('div');
     pagination.classList.add('swiper-pagination');
-    block.append(nextBtn, prevBtn);
+
+    const isCard = isCardCarousel(block);
+
+    if (isCard) {
+        // Place arrows on wrapper so they aren't clipped by overflow:hidden on block
+        block.parentElement.append(nextBtn, prevBtn);
+    } else {
+        block.append(nextBtn, prevBtn);
+    }
 
     // Place pagination after the block (outside Swiper container) so it doesn't affect arrow positioning
     block.parentElement.appendChild(pagination);
-
-    const isCard = isCardCarousel(block);
 
     const swiperConfig = {
         navigation: {
@@ -236,6 +243,7 @@ export function initSwiperOnly(block) {
 
 
 export default function decorate(block) {
+    if(window.location.href.includes("author")) return; // Skip initialization in AEM editor preview to avoid conflicts with React-based carousel
     const isDesktop = window.matchMedia('(min-width: 900px)');
 
     createSwiper(block);
