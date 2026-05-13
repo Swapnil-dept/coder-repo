@@ -58,7 +58,8 @@
         "atdw-amenities",
         "atdw-contacts",
         "atdw-map",
-        "atdw-reviews"
+        "atdw-reviews",
+        "carousel"
       ]
     }
   ]
