@@ -341,6 +341,21 @@
           }
         },
         {
+          "title": "Carousel Card Item",
+          "id": "carousel-card-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Carousel Card Item",
+                  "model": "carousel-card-item"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Columns",
           "id": "columns",
           "plugins": {

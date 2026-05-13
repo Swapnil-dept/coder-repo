@@ -12,7 +12,7 @@
               "name": "Carousel",
               "model": "carousel",
               "filter": "carousel"
-              
+
             }
           }
         }
@@ -28,6 +28,21 @@
             "template": {
               "name": "Carousel Item",
               "model": "carousel-item"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Carousel Card Item",
+      "id": "carousel-card-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Carousel Card Item",
+              "model": "carousel-card-item"
             }
           }
         }
@@ -86,14 +101,75 @@
         "valueType": "string"
       }
     ]
-  }
-
+  },
+    {
+      "id": "carousel-card-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Card Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "name": "imageAlt",
+          "value": "",
+          "label": "Card Image Alt Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "categoryLabel",
+          "value": "",
+          "label": "Category Label",
+          "valueType": "string"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "badgeImage",
+          "label": "Badge Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "value": "",
+          "label": "Card Title",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "value": "",
+          "label": "Description",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "goToSiteLink",
+          "value": "",
+          "label": "Go To Site URL",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "viewMoreLink",
+          "value": "",
+          "label": "View More URL",
+          "valueType": "string"
+        }
+      ]
+    }
   ],
   "filters": [
     {
       "id": "carousel",
       "components": [
-        "carousel-item"
+        "carousel-item",
+        "carousel-card-item"
       ]
     }
   ]

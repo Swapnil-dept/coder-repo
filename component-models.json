@@ -532,6 +532,67 @@
     ]
   },
   {
+    "id": "carousel-card-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Card Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Card Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "categoryLabel",
+        "value": "",
+        "label": "Category Label",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "badgeImage",
+        "label": "Badge Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "value": "",
+        "label": "Card Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "goToSiteLink",
+        "value": "",
+        "label": "Go To Site URL",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "viewMoreLink",
+        "value": "",
+        "label": "View More URL",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
