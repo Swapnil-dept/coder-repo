@@ -30,12 +30,6 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "propertyImageAlt",
-          "label": "Property Image Alt Text"
-        },
-        {
-          "component": "text",
-          "valueType": "string",
           "name": "propertyName",
           "label": "Property Name",
           "description": "Displayed as the bold title, e.g. BEACH CLUB, HAMILTON ISLAND"
@@ -81,12 +75,6 @@
           "name": "locationImage",
           "label": "Location Image",
           "description": "Image shown on the right side of the card (e.g. aerial view or map screenshot)"
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "locationImageAlt",
-          "label": "Location Image Alt Text"
         }
       ]
     }

@@ -31,42 +31,101 @@ export default function decorate(block) {
   const linksEl = document.createElement('div');
   linksEl.className = 'atdw-contact-links';
 
+  // Contact items with values displayed
   const CONTACT_ITEMS = [
-    { type: 'website',   url: websiteUrl, label: 'Website' },
-    { type: 'email',     url: email,      label: 'Email' },
-    { type: 'phone',     url: phone,      label: 'Phone' },
-    { type: 'instagram', url: instagram,  label: 'Instagram' },
-    { type: 'facebook',  url: facebook,   label: 'Facebook' },
+    { type: 'website', url: websiteUrl, label: 'Website', icon: 'globe', showValue: true },
+    { type: 'email', url: email, label: 'Email', icon: 'email', showValue: true },
+    { type: 'phone', url: phone, label: 'Phone', icon: 'phone', showValue: true },
   ];
 
-  CONTACT_ITEMS.forEach(({ type, url, label }) => {
-    if (!url) return;
+  // Social links (icon only)
+  const SOCIAL_ITEMS = [
+    { type: 'instagram', url: instagram, label: 'Instagram', icon: 'instagram' },
+    { type: 'facebook', url: facebook, label: 'Facebook', icon: 'facebook' },
+  ];
+
+  /**
+   * Create a contact/social link item
+   */
+  function createContactItem({ type, url, label, icon, showValue = false }) {
+    if (!url) return null;
 
     const item = document.createElement('a');
     item.className = `atdw-contact-item atdw-contact-${type}`;
 
+    let displayValue = url;
+
     if (type === 'email') {
       item.href = url.startsWith('mailto:') ? url : `mailto:${url}`;
+      displayValue = url.replace('mailto:', '');
     } else if (type === 'phone') {
       item.href = url.startsWith('tel:') ? url : `tel:${url.replace(/\s/g, '')}`;
+      displayValue = url.replace('tel:', '');
     } else {
       item.href = url;
       item.target = '_blank';
       item.rel = 'noopener noreferrer';
+      // Truncate URL display
+      try {
+        const urlObj = new URL(url);
+        displayValue = urlObj.hostname + urlObj.pathname.slice(0, 10) + (urlObj.pathname.length > 10 ? '...' : '');
+      } catch {
+        displayValue = url.length > 30 ? `${url.slice(0, 27)}...` : url;
+      }
     }
 
-    const icon = document.createElement('span');
-    icon.className = `atdw-contact-icon icon-${type}`;
-    icon.setAttribute('aria-hidden', 'true');
+    // Icon element using img tag
+    const iconEl = document.createElement('span');
+    iconEl.className = `atdw-contact-icon icon-${type}`;
+    iconEl.setAttribute('aria-hidden', 'true');
+
+    const iconImg = document.createElement('img');
+    iconImg.src = `/icons/${icon}.svg`;
+    iconImg.alt = '';
+    iconImg.loading = 'lazy';
+    iconEl.appendChild(iconImg);
+
+    // Text wrapper
+    const textEl = document.createElement('span');
+    textEl.className = 'atdw-contact-text';
 
     const labelEl = document.createElement('span');
     labelEl.className = 'atdw-contact-label';
     labelEl.textContent = label;
+    textEl.appendChild(labelEl);
 
-    item.appendChild(icon);
-    item.appendChild(labelEl);
-    linksEl.appendChild(item);
+    if (showValue) {
+      const valueEl = document.createElement('span');
+      valueEl.className = 'atdw-contact-value';
+      valueEl.textContent = displayValue;
+      textEl.appendChild(valueEl);
+    }
+
+    item.appendChild(iconEl);
+    item.appendChild(textEl);
+
+    return item;
+  }
+
+  // Add contact items
+  CONTACT_ITEMS.forEach((itemData) => {
+    const item = createContactItem(itemData);
+    if (item) linksEl.appendChild(item);
   });
+
+  // Add social links container
+  const hasSocial = SOCIAL_ITEMS.some(({ url }) => url);
+  if (hasSocial) {
+    const socialEl = document.createElement('div');
+    socialEl.className = 'atdw-contact-social';
+
+    SOCIAL_ITEMS.forEach((itemData) => {
+      const item = createContactItem(itemData);
+      if (item) socialEl.appendChild(item);
+    });
+
+    linksEl.appendChild(socialEl);
+  }
 
   block.textContent = '';
   block.appendChild(headingEl);

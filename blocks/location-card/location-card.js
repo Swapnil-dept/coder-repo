@@ -4,15 +4,13 @@
  *
  * Model field order (one single-cell row per field):
  *   Row 0: propertyImage
- *   Row 1: propertyImageAlt
- *   Row 2: propertyName
- *   Row 3: address
- *   Row 4: phone
- *   Row 5: directionsUrl
- *   Row 6: directionsLabel
- *   Row 7: creditText
- *   Row 8: locationImage
- *   Row 9: locationImageAlt
+ *   Row 1: propertyName
+ *   Row 2: address
+ *   Row 3: phone
+ *   Row 4: directionsUrl
+ *   Row 5: directionsLabel
+ *   Row 6: creditText
+ *   Row 7: locationImage
  * @param {HTMLElement} block
  */
 export default function decorate(block) {
@@ -22,17 +20,20 @@ export default function decorate(block) {
     || rows[index]?.textContent?.trim()
     || '';
 
+  const getLink = (index) => {
+    const anchor = rows[index]?.querySelector('a');
+    return anchor ? anchor.href : getText(index);
+  };
+
   // Extract field values
   const propertyPicture = rows[0]?.querySelector('picture');
-  const propertyImageAlt = getText(1);
-  const propertyName = getText(2);
-  const address = getText(3);
-  const phone = getText(4);
-  const directionsUrl = getText(5);
-  const directionsLabel = getText(6) || 'GET DIRECTIONS';
-  const creditText = getText(7);
-  const locationPicture = rows[8]?.querySelector('picture');
-  const locationImageAlt = getText(9);
+  const propertyName = getText(1);
+  const address = getText(2);
+  const phone = getText(3);
+  const directionsUrl = getLink(4);
+  const directionsLabel = getText(5) || 'GET DIRECTIONS';
+  const creditText = getText(6);
+  const locationPicture = rows[7]?.querySelector('picture');
 
   /* ── Left column: Info panel ── */
   const infoCol = document.createElement('div');
@@ -43,8 +44,6 @@ export default function decorate(block) {
     const imageWrap = document.createElement('div');
     imageWrap.className = 'location-card-image';
     const pic = propertyPicture.cloneNode(true);
-    const img = pic.querySelector('img');
-    if (img && propertyImageAlt) img.alt = propertyImageAlt;
     imageWrap.appendChild(pic);
     infoCol.appendChild(imageWrap);
   }
@@ -77,9 +76,8 @@ export default function decorate(block) {
     addrRow.className = 'location-card-detail-row';
 
     const addrIcon = document.createElement('span');
-    addrIcon.className = 'location-card-detail-icon';
+    addrIcon.className = 'location-card-detail-icon location-card-icon-address';
     addrIcon.setAttribute('aria-hidden', 'true');
-    addrIcon.textContent = '\u{1F4CD}';
 
     const addrText = document.createElement('span');
     addrText.className = 'location-card-address';
@@ -96,9 +94,8 @@ export default function decorate(block) {
     phoneRow.className = 'location-card-detail-row';
 
     const phoneIcon = document.createElement('span');
-    phoneIcon.className = 'location-card-detail-icon';
+    phoneIcon.className = 'location-card-detail-icon location-card-icon-phone';
     phoneIcon.setAttribute('aria-hidden', 'true');
-    phoneIcon.textContent = '\u{1F4DE}';
 
     const phoneLink = document.createElement('a');
     phoneLink.className = 'location-card-phone';
@@ -152,8 +149,6 @@ export default function decorate(block) {
 
   if (locationPicture) {
     const pic = locationPicture.cloneNode(true);
-    const img = pic.querySelector('img');
-    if (img && locationImageAlt) img.alt = locationImageAlt;
     imageCol.appendChild(pic);
   }
 
