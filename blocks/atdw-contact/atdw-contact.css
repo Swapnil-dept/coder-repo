@@ -2,6 +2,7 @@
 .atdw-contact {
   padding: var(--spacing-l, 2rem) var(--spacing-m, 1rem);
   border-top: 1px solid var(--border-color, #e8e8e8);
+  background-color: var(--background-color, #fff);
 }
 
 .atdw-contact-heading {
@@ -16,14 +17,14 @@
 .atdw-contact-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
 .atdw-contact-item {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.75rem;
   text-decoration: none;
   color: var(--text-color, #333f48);
   font-size: 0.875rem;
@@ -33,24 +34,84 @@
   color: var(--link-hover-color, #00817d);
 }
 
-/* Icon placeholders — replaced at build time with actual SVG sprites */
-.atdw-contact-icon {
-  display: block;
-  width: 2rem;
-  height: 2rem;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+.atdw-contact-item:hover .atdw-contact-icon {
+  color: var(--link-hover-color, #00817d);
 }
 
-.icon-website  { background-image: url('/icons/globe.svg'); }
-.icon-email    { background-image: url('/icons/email.svg'); }
-.icon-phone    { background-image: url('/icons/phone.svg'); }
-.icon-instagram { background-image: url('/icons/instagram.svg'); }
-.icon-facebook  { background-image: url('/icons/facebook.svg'); }
+/* Icon container */
+.atdw-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  color: var(--text-color, #333f48);
+}
+
+.atdw-contact-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Text content wrapper */
+.atdw-contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
 
 .atdw-contact-label {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-color, #333f48);
+}
+
+.atdw-contact-value {
+  font-size: 0.875rem;
+  color: var(--text-color-secondary, #5a6872);
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Social links - icon only style */
+.atdw-contact-social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.atdw-contact-social .atdw-contact-item {
+  gap: 0;
+}
+
+.atdw-contact-social .atdw-contact-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.atdw-contact-social .atdw-contact-text {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .atdw-contact-links {
+    gap: 1.25rem;
+  }
+
+  .atdw-contact-social {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .atdw-contact-value {
+    max-width: 140px;
+  }
 }
 
 @media (min-width: 900px) {

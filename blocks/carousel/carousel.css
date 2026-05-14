@@ -26,13 +26,22 @@
 .banner-carousel .carousel .swiper-slide {
   flex-shrink: 0;
   width: 100%;
+  scale: 1;
+  cursor: pointer;
+  transition: scale 0.3s ease-in-out;
 }
 
-.banner-carousel .carousel .swiper-slide > div:first-child {
+.banner-carousel .carousel .swiper-slide:hover {
+  scale: 1.1;
+  cursor: pointer;
+  transition: scale 0.3s ease-in-out;
+}
+
+.banner-carousel .carousel .swiper-slide>div:first-child {
   width: 100%;
 }
 
-.banner-carousel .carousel .swiper-slide > div:last-child {
+.banner-carousel .carousel .swiper-slide>div:last-child {
   display: none;
 }
 
@@ -85,7 +94,7 @@
 }
 
 /* Pagination (segmented bar indicators) */
-.banner-carousel .carousel-wrapper > .swiper-pagination {
+.banner-carousel .carousel-wrapper>.swiper-pagination {
   display: flex;
   justify-content: center;
   gap: 0;
@@ -93,7 +102,7 @@
   margin: 16px auto 0;
 }
 
-.banner-carousel .carousel-wrapper > .swiper-pagination .swiper-pagination-bullet {
+.banner-carousel .carousel-wrapper>.swiper-pagination .swiper-pagination-bullet {
   flex: 1;
   height: 2px;
   border-radius: 0;
@@ -101,12 +110,13 @@
   opacity: 1;
 }
 
-.banner-carousel .carousel-wrapper > .swiper-pagination .swiper-pagination-bullet-active {
+.banner-carousel .carousel-wrapper>.swiper-pagination .swiper-pagination-bullet-active {
   background: #2d3c3c;
   height: 3px;
 }
 
 @media (width < 600px) {
+
   .banner-carousel .carousel .swiper-button-next,
   .banner-carousel .carousel .swiper-button-prev {
     width: 36px;
@@ -119,7 +129,7 @@
     font-size: 14px;
   }
 
-  .banner-carousel .carousel-wrapper > .swiper-pagination {
+  .banner-carousel .carousel-wrapper>.swiper-pagination {
     width: 200px;
   }
 }
@@ -158,32 +168,36 @@
   height: auto;
 }
 
-/* Arrows – on wrapper edges so they aren't clipped by overflow:hidden */
+/* Arrows – on wrapper edges, outside the overflow-hidden block */
 .card-carousel .carousel-wrapper .swiper-button-next,
 .card-carousel .carousel-wrapper .swiper-button-prev {
   position: absolute;
-  width: 44px;
-  height: 44px;
-  background-color: rgb(93 117 117 / 85%);
+  width: 40px;
+  height: 40px;
+  background-color: rgb(93 117 117 / 70%);
   border-radius: 4px;
   color: #fff;
-  top: 40%;
+  top: 38%;
   margin-top: 0;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-carousel .carousel-wrapper .swiper-button-next::after,
 .card-carousel .carousel-wrapper .swiper-button-prev::after {
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 700;
   color: #fff;
 }
 
 .card-carousel .carousel-wrapper .swiper-button-prev {
-  left: 0;
+  left: 2px;
 }
 
 .card-carousel .carousel-wrapper .swiper-button-next {
-  right: 0;
+  right: 2px;
 }
 
 .card-carousel .carousel-wrapper .swiper-button-next.swiper-button-disabled,
@@ -192,7 +206,7 @@
 }
 
 /* Pagination */
-.card-carousel .carousel-wrapper > .swiper-pagination {
+.card-carousel .carousel-wrapper>.swiper-pagination {
   display: flex;
   justify-content: center;
   gap: 0;
@@ -200,7 +214,7 @@
   margin: 24px auto 0;
 }
 
-.card-carousel .carousel-wrapper > .swiper-pagination .swiper-pagination-bullet {
+.card-carousel .carousel-wrapper>.swiper-pagination .swiper-pagination-bullet {
   flex: 1;
   height: 2px;
   border-radius: 0;
@@ -208,7 +222,7 @@
   opacity: 1;
 }
 
-.card-carousel .carousel-wrapper > .swiper-pagination .swiper-pagination-bullet-active {
+.card-carousel .carousel-wrapper>.swiper-pagination .swiper-pagination-bullet-active {
   background: #2d3c3c;
   height: 3px;
 }
@@ -216,8 +230,8 @@
 /* ---- Card styles ---- */
 .carousel-card {
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 12%);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -227,9 +241,10 @@
 
 .carousel-card:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
 }
 
+/* -- Media section -- */
 .carousel-card-media {
   position: relative;
   overflow: visible;
@@ -239,12 +254,12 @@
   overflow: hidden;
 }
 
-.card-carousel .carousel-card-media picture {
+.carousel-card-image picture {
   display: block;
   width: 100%;
 }
 
-.card-carousel .carousel-card-media picture img {
+.carousel-card-image picture img {
   width: 100%;
   height: auto;
   display: block;
@@ -252,60 +267,68 @@
   aspect-ratio: 4 / 3;
 }
 
+/* Category tag (e.g. TOUR / DEAL) */
 .carousel-card-tag {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: -12px;
+  left: 12px;
   background: #00b7a8;
   color: #fff;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: 2px;
-  letter-spacing: 0.5px;
-  width: auto;
-  display: inline-block;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  z-index: 1;
 }
 
+/* Badge (circular award icon) */
 .carousel-card-badge {
   position: absolute;
-  bottom: -30px;
+  top: auto;
+  bottom: 0;
   right: 10px;
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   z-index: 2;
+  border-radius: 50%;
+  overflow: hidden;
+  transform: translateY(50%);
 }
 
-.card-carousel .carousel-card-badge picture,
-.card-carousel .carousel-card-badge img {
+.carousel-card-badge picture,
+.carousel-card-badge img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
 }
 
+/* -- Content section -- */
 .carousel-card-content {
-  padding: 20px 16px 16px;
+  padding: 18px 14px 14px;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
 .carousel-card-title {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   color: #2d3c3c;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   letter-spacing: 0.5px;
   line-height: 1.3;
 }
 
 .carousel-card-desc {
-  font-size: 14px;
+  font-size: 13px;
   color: #555;
   line-height: 1.5;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   flex: 1;
 }
 
@@ -313,48 +336,65 @@
   margin: 0;
 }
 
+/* Wishlist heart icon */
 .carousel-card-heart {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   cursor: pointer;
+}
+
+.carousel-card-heart picture {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .carousel-card-heart img {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
 }
 
+/* -- Buttons -- */
 .carousel-card-buttons {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin-top: auto;
 }
 
-.carousel-card-btn-wrap {
-  display: inline-block;
+.section .carousel-card-btn-wrap {
+  display: inline-flex;
+ 
 }
 
-.carousel-card-btn {
+.section .carousel-card-btn-wrap .carousel-card-btn-primary{
+   border: 2px solid rgb(0, 165, 164);
+  background-color: rgb(0, 165, 164);
+  color: rgb(255, 255, 255);
+}
+
+a.carousel-card-btn {
   display: inline-block;
-  padding: 12px 24px;
-  font-size: 13px;
+  padding: 8px 16px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 4px;
   text-align: center;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   cursor: pointer;
+  white-space: nowrap;
+  line-height: 1.2;
   transition: opacity 0.2s ease;
+  text-decoration: none;
 }
 
 .carousel-card-btn:hover {
   opacity: 0.85;
 }
 
-.carousel-card-btn-primary {
+.section.carousel-card-btn-primary {
   background: #00b7a8;
   color: #fff;
   border: 2px solid #00b7a8;
@@ -362,11 +402,11 @@
 
 .carousel-card-btn-outline {
   background: #fff;
-  color: #1a3c6e;
-  border: 2px solid #3a3f4b;
+  color: #2d3c3c;
+  border: 2px solid #2d3c3c;
 }
 
-/* Card carousel mobile */
+/* ---- Card carousel responsive ---- */
 @media (width < 600px) {
   .card-carousel .carousel-wrapper {
     padding: 0 16px;
@@ -382,11 +422,11 @@
 
   .card-carousel .carousel-wrapper .swiper-button-next,
   .card-carousel .carousel-wrapper .swiper-button-prev {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
   }
 
-  .card-carousel .carousel-wrapper > .swiper-pagination {
+  .card-carousel .carousel-wrapper>.swiper-pagination {
     width: 200px;
   }
 }
@@ -397,7 +437,7 @@
 }
 
 .section.card-carousel.carousel-container .default-content-wrapper h2 {
-  font-size: 50px; 
+  font-size: 50px;
   margin-bottom: 16px;
   font-weight: 700;
 }
