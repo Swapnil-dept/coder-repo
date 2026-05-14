@@ -669,6 +669,79 @@
     ]
   },
   {
+    "id": "location-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "propertyImage",
+        "label": "Property Image",
+        "description": "Hero image shown at the top-left of the card"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "propertyImageAlt",
+        "label": "Property Image Alt Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "propertyName",
+        "label": "Property Name",
+        "description": "Displayed as the bold title, e.g. BEACH CLUB, HAMILTON ISLAND"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "address",
+        "label": "Address",
+        "description": "Full address, e.g. Hamilton Island, Whitsunday Area, Queensland, 4803"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "phone",
+        "label": "Phone Number",
+        "description": "Contact phone number, e.g. +61 137333"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "directionsUrl",
+        "label": "Get Directions URL",
+        "description": "URL for the Get Directions button (e.g. Google Maps link)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "directionsLabel",
+        "label": "Directions Button Label",
+        "description": "Button text, defaults to GET DIRECTIONS"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "creditText",
+        "label": "Content Credit Text",
+        "description": "Attribution line, e.g. Content Provided By Hamilton Island"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "locationImage",
+        "label": "Location Image",
+        "description": "Image shown on the right side of the card (e.g. aerial view or map screenshot)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "locationImageAlt",
+        "label": "Location Image Alt Text"
+      }
+    ]
+  },
+  {
     "id": "tabs-cards-tab",
     "fields": [
       {

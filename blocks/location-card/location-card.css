@@ -1,0 +1,183 @@
+/* Block: location-card */
+.location-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 10%);
+  background: var(--background-color, #fff);
+}
+
+/* ── Left column: Info ── */
+.location-card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.location-card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.location-card-image picture,
+.location-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Details */
+.location-card-details {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Name row with icon */
+.location-card-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.location-card-icon-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--link-color, #00817d);
+  flex-shrink: 0;
+}
+
+.location-card-icon-pin::after {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url('/icons/map-pin-white.svg') center / contain no-repeat;
+}
+
+.location-card-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-color, #333f48);
+}
+
+/* Detail rows (address, phone) */
+.location-card-detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-color, #555);
+}
+
+.location-card-detail-icon {
+  flex-shrink: 0;
+  width: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.location-card-address,
+.location-card-phone {
+  line-height: 1.4;
+}
+
+.location-card-phone {
+  color: var(--text-color, #555);
+  text-decoration: none;
+}
+
+.location-card-phone:hover {
+  color: var(--link-hover-color, #00817d);
+  text-decoration: underline;
+}
+
+/* CTA Button */
+.location-card-cta {
+  margin-top: 0.5rem;
+}
+
+.location-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: var(--link-color, #00817d);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.location-card-btn:hover {
+  background: var(--link-hover-color, #006b68);
+  color: #fff;
+}
+
+.location-card-btn-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Credit */
+.location-card-credit {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-color, #999);
+}
+
+/* ── Right column: Location image ── */
+.location-card-location {
+  width: 100%;
+  min-height: 250px;
+  overflow: hidden;
+}
+
+.location-card-location picture,
+.location-card-location img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Desktop: side-by-side layout ── */
+@media (min-width: 900px) {
+  .location-card {
+    flex-direction: row;
+  }
+
+  .location-card-info {
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+
+  .location-card-location {
+    flex: 1;
+    min-height: auto;
+  }
+
+  .location-card-image {
+    aspect-ratio: 16 / 10;
+  }
+}
