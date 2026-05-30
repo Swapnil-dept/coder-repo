@@ -50,8 +50,9 @@
         "hero",
         "cards",
         "columns",
-        "fragment", 
-        "tabs-card"
+        "fragment",
+        "tabs-card",
+        "card"
       ]
     }
   ]

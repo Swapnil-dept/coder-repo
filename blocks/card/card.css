@@ -1,0 +1,269 @@
+
+.card {
+  padding: 64px 0; /* Generous vertical padding */
+  max-width: 1200px; /* Max width for content */
+  margin: 0 auto; /* Center the block */
+  box-sizing: border-box;
+}
+
+.card .card-block-heading {
+  color: #004F47; /* dark teal */
+  font-size: clamp(2.5rem, 4vw, 3rem); /* ~40-48px */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px; /* Gap between heading and subheading */
+  text-align: left;
+  padding: 0 24px; /* Horizontal padding for text on smaller screens */
+}
+
+.card .card-block-subheading {
+  color: #4A4A4A; /* dark grey */
+  font-size: clamp(1rem, 1.5vw, 1.125rem); /* ~16-18px */
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 48px; /* Gap between subheading and cards */
+  text-align: left;
+  padding: 0 24px; /* Horizontal padding for text on smaller screens */
+}
+
+@media (min-width: 768px) {
+  .card .card-block-heading,
+  .card .card-block-subheading {
+    padding: 0; /* Remove horizontal padding on larger screens */
+  }
+}
+
+.card .card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 24px; /* Horizontal padding for cards on smaller screens */
+  display: grid;
+  gap: 32px; /* Gap between cards */
+}
+
+@media (min-width: 768px) {
+  .card .card-list {
+    padding: 0; /* Remove horizontal padding on larger screens */
+  }
+}
+
+/* Default/Mobile layout: 1 column */
+.card .card-list {
+  grid-template-columns: 1fr;
+}
+
+/* Tablet layout: 2 columns */
+@media (min-width: 768px) {
+  .card .card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop layout for icon-cards and support-cards-with-header: 3 columns */
+@media (min-width: 1200px) {
+  .card.icon-cards .card-list,
+  .card.support-cards-with-header .card-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop layout for text-cards: 2 columns */
+@media (min-width: 1200px) {
+  .card.text-cards .card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card .card-item {
+  background-color: #FFFFFF;
+  padding: 32px; /* Padding within card */
+  border-radius: 8px; /* Slight border radius for cards */
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow for definition */
+}
+
+.card .card-item-icon-wrapper {
+  width: 64px; /* Icon circle size */
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px; /* Gap between icon and title */
+  border: 1px dotted; /* Dotted border as seen in image */
+}
+
+/* Icon background colors and border colors based on card position */
+.card.icon-cards .card-item:nth-child(1) .card-item-icon-wrapper {
+  background-color: #E0F2F2; /* light teal */
+  border-color: #008080; /* teal */
+  color: #008080; /* For SVG fill/stroke if it uses currentColor */
+}
+.card.icon-cards .card-item:nth-child(2) .card-item-icon-wrapper {
+  background-color: #E0F2E8; /* light green */
+  border-color: #008040; /* green */
+  color: #008040; /* For SVG fill/stroke if it uses currentColor */
+}
+.card.icon-cards .card-item:nth-child(3) .card-item-icon-wrapper {
+  background-color: #FCE0E0; /* light red/pink */
+  border-color: #E04040; /* red */
+  color: #E04040; /* For SVG fill/stroke if it uses currentColor */
+}
+
+.card .card-item-icon-wrapper picture {
+  line-height: 0; /* Remove extra space below image */
+}
+
+.card .card-item-icon-wrapper img {
+  width: 32px; /* SVG icon size */
+  height: 32px;
+  object-fit: contain;
+  /* If the SVG is monochrome and needs recoloring, a filter might be needed here.
+     For now, assuming the SVG itself is colored or uses currentColor. */
+}
+
+.card .card-item-title {
+  color: #004F47; /* dark teal */
+  font-size: clamp(1.5rem, 2.5vw, 1.75rem); /* ~24-28px */
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 16px; /* Gap between title and description */
+}
+
+.card .card-item-description {
+  color: #4A4A4A; /* dark grey */
+  font-size: clamp(1rem, 1.5vw, 1.125rem); /* ~16-18px */
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 32px; /* Gap between description and button */
+  flex-grow: 1; /* Push CTA to bottom */
+}
+
+.card .card-item-description a {
+  color: #004F47; /* dark teal */
+  text-decoration: underline;
+}
+
+.card .card-item-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px; /* Button padding */
+  border: 1px solid #004F47; /* dark teal */
+  border-radius: 4px;
+  color: #004F47; /* dark teal */
+  font-size: clamp(1rem, 1.5vw, 1.125rem); /* ~16-18px */
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  white-space: nowrap; /* Prevent button text from wrapping */
+  align-self: flex-start; /* Align button to the left */
+}
+
+.card .card-item-cta svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor; /* Inherit color from parent */
+  transition: transform 0.3s ease;
+}
+
+.card .card-item-cta:hover {
+  background-color: #004F47; /* dark teal */
+  color: #FFFFFF; /* white */
+  border-color: #004F47; /* dark teal */
+}
+
+.card .card-item-cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* Specific styles for support-cards-with-header variant */
+.card.support-cards-with-header .card-item {
+  padding: 0; /* No padding for these cards, content is flush */
+  box-shadow: none; /* No shadow */
+  border-radius: 0; /* No border radius */
+}
+
+.card.support-cards-with-header .card-item-title {
+  margin-top: 0;
+  margin-bottom: 8px; /* Smaller gap to description */
+}
+
+.card.support-cards-with-header .card-item-description {
+  margin-bottom: 0; /* No button, so no bottom margin */
+}
+
+/* Specific styles for member-spotlight-cards variant */
+.card.member-spotlight-cards {
+  background-color: #F0F5F2; /* Light green/grey background for the entire block */
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.card.member-spotlight-cards .card-block-heading {
+  margin-bottom: 48px; /* Increased gap between heading and cards */
+  position: relative;
+  font-weight: 700; /* Bolder heading */
+  padding-bottom: 20px; /* Space for the underline */
+}
+
+.card.member-spotlight-cards .card-block-heading::after {
+  content: '';
+  position: absolute;
+  left: 24px; /* Align with card padding on mobile */
+  bottom: 0; /* Position the underline below the text */
+  width: 100px; /* Fixed width for the underline */
+  height: 4px;
+  background-color: #80C040; /* Green underline color */
+}
+
+@media (min-width: 768px) {
+  .card.member-spotlight-cards .card-block-heading::after {
+    left: 0; /* Remove left padding on larger screens */
+  }
+}
+
+/* Desktop layout for member-spotlight-cards: 2 columns */
+@media (min-width: 768px) { /* Re-using tablet breakpoint for 2 columns */
+  .card.member-spotlight-cards .card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card.member-spotlight-cards .card-item {
+  background-color: transparent; /* No white background for the card itself */
+  box-shadow: none; /* No shadow */
+  padding: 0; /* No internal padding, content is flush */
+}
+
+.card.member-spotlight-cards .card-item picture {
+  margin-bottom: 24px; /* Gap between image and title */
+  border-radius: 8px; /* Rounded corners for the image */
+  overflow: hidden; /* Ensure border-radius applies to the image */
+  display: block; /* Ensure picture behaves as a block for margin */
+}
+
+.card.member-spotlight-cards .card-item picture img {
+  width: 100%; /* Image fills card width */
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.card.member-spotlight-cards .card-item-title {
+  font-weight: 700; /* Bolder card title */
+  margin-bottom: 8px; /* Smaller gap between title and description */
+}
+
+.card.member-spotlight-cards .card-item-description {
+  font-style: italic; /* Italicize the quote */
+  margin-bottom: 24px; /* Gap between description and button */
+}
+
+.card.member-spotlight-cards .card-item-cta {
+  /* Inherits styles from base .card-item-cta */
+  align-self: flex-start; /* Ensure button aligns left */
+}
+    
