@@ -55,3 +55,247 @@
     min-height: 400px;
   }
 }
+
+/* --- Variant: Image Right, Text Left --- */
+.hero.image-right-text-left {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 40px; /* Spacing between columns */
+  padding: 60px 80px; /* Internal padding for the container */
+  background-color: rgb(250, 245, 242); /* Light peach background */
+  border-radius: 24px;
+  min-height: unset; /* Override base hero min-height */
+  text-align: left; /* Override base hero text-align */
+  position: relative; /* For positioning the dotted circle */
+  overflow: hidden; /* Ensure dotted circle doesn't overflow */
+}
+
+.hero.image-right-text-left .hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px; /* Spacing between heading, description, cta */
+}
+
+.hero.image-right-text-left .hero-content h1,
+.hero.image-right-text-left .hero-content h2,
+.hero.image-right-text-left .hero-content h3,
+.hero.image-right-text-left .hero-content h4,
+.hero.image-right-text-left .hero-content h5,
+.hero.image-right-text-left .hero-content h6 {
+  color: rgb(0, 70, 67); /* Dark teal heading */
+  font-size: 40px; /* Adjust font size */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0; /* Override base hero margin */
+}
+
+.hero.image-right-text-left .hero-content p {
+  color: rgb(85, 85, 85); /* Dark grey body text */
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 0; /* Override base hero margin */
+}
+
+.hero.image-right-text-left .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid rgb(0, 70, 67);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 70, 67);
+  border-radius: 24px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero.image-right-text-left .button:hover {
+  background-color: rgb(0, 70, 67);
+  color: rgb(255, 255, 255);
+}
+
+.hero.image-right-text-left .button::after {
+  content: '→'; /* Arrow icon */
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.hero.image-right-text-left picture {
+  position: relative; /* Override absolute positioning from base hero */
+  z-index: 1;
+  inset: unset;
+  object-fit: cover;
+  box-sizing: border-box;
+  border-radius: 24px; /* Rounded corners for image */
+  width: 100%;
+  height: 100%;
+  display: block; /* Ensure picture takes up space */
+}
+
+.hero.image-right-text-left img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+}
+
+/* Dotted circle overlay */
+.hero.image-right-text-left::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0; /* Position relative to the right column */
+  transform: translate(25%, -50%); /* Adjust to center on image and move slightly right */
+  width: 400px; /* Size of the circle */
+  height: 400px;
+  border: 4px dotted rgb(255, 192, 203); /* Pink dotted border */
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* Responsive adjustments for image-right-text-left */
+@media (width <= 900px) {
+  .hero.image-right-text-left {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    padding: 40px 24px;
+    gap: 30px;
+  }
+
+  .hero.image-right-text-left .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero.image-right-text-left::before {
+    width: 300px;
+    height: 300px;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+}
+
+/* --- Variant: Image Left, Text Right --- */
+.hero.image-left-text-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 40px; /* Spacing between columns */
+  padding: 60px 80px; /* Internal padding for the container */
+  background-color: rgb(237, 247, 244); /* Light green background */
+  border-radius: 24px;
+  min-height: unset; /* Override base hero min-height */
+  text-align: left; /* Override base hero text-align */
+  position: relative; /* For positioning the dotted circle */
+  overflow: hidden; /* Ensure dotted circle doesn't overflow */
+}
+
+.hero.image-left-text-right .hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px; /* Spacing between heading, description, cta */
+}
+
+.hero.image-left-text-right .hero-content h1,
+.hero.image-left-text-right .hero-content h2,
+.hero.image-left-text-right .hero-content h3,
+.hero.image-left-text-right .hero-content h4,
+.hero.image-left-text-right .hero-content h5,
+.hero.image-left-text-right .hero-content h6 {
+  color: rgb(0, 70, 67); /* Dark teal heading */
+  font-size: 40px; /* Adjust font size */
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0; /* Override base hero margin */
+}
+
+.hero.image-left-text-right .hero-content p {
+  color: rgb(85, 85, 85); /* Dark grey body text */
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 0; /* Override base hero margin */
+}
+
+.hero.image-left-text-right .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid rgb(0, 70, 67);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 70, 67);
+  border-radius: 24px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero.image-left-text-right .button:hover {
+  background-color: rgb(0, 70, 67);
+  color: rgb(255, 255, 255);
+}
+
+.hero.image-left-text-right .button::after {
+  content: '→'; /* Arrow icon */
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.hero.image-left-text-right picture {
+  position: relative; /* Override absolute positioning from base hero */
+  z-index: 1;
+  inset: unset;
+  object-fit: cover;
+  box-sizing: border-box;
+  border-radius: 24px; /* Rounded corners for image */
+  width: 100%;
+  height: 100%;
+  display: block; /* Ensure picture takes up space */
+}
+
+.hero.image-left-text-right img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+}
+
+/* Dotted circle overlay */
+.hero.image-left-text-right::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0; /* Position relative to the left column */
+  transform: translate(-25%, -50%); /* Adjust to center on image and move slightly left */
+  width: 400px; /* Size of the circle */
+  height: 400px;
+  border: 4px dotted rgb(144, 238, 144); /* Light green dotted border */
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* Responsive adjustments for image-left-text-right */
+@media (width <= 900px) {
+  .hero.image-left-text-right {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    padding: 40px 24px;
+    gap: 30px;
+  }
+
+  .hero.image-left-text-right .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero.image-left-text-right::before {
+    width: 300px;
+    height: 300px;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+}

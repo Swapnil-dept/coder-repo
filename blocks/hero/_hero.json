@@ -21,6 +21,24 @@
       "id": "hero",
       "fields": [
         {
+          "component": "select",
+          "name": "classes",
+          "label": "Style",
+          "valueType": "string",
+          "options": [
+            { "name": "Default (Full Width)", "value": "" },
+            { "name": "Image Right, Text Left", "value": "image-right-text-left" },
+            { "name": "Image Left, Text Right", "value": "image-left-text-right" }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "backgroundColor",
+          "label": "Background Color",
+          "value": ""
+        },
+        {
           "component": "reference",
           "valueType": "string",
           "name": "image",
@@ -40,6 +58,18 @@
           "value": "",
           "label": "Text",
           "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "cta",
+          "label": "CTA Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ctaText",
+          "label": "CTA Label"
         }
       ]
     }
