@@ -1,0 +1,126 @@
+
+.list-block {
+  /* Block-level styles */
+  --list-block-heading-color: #1A4747;
+  --list-block-heading-font-size: 1.5rem; /* 24px */
+  --list-block-heading-font-weight: 600;
+  --list-block-item-title-color: #1A4747;
+  --list-block-item-title-font-size: 1.125rem; /* 18px */
+  --list-block-item-title-font-weight: 600;
+  --list-block-icon-circle-bg: #E0F2E7;
+  --list-block-icon-color: #1A4747;
+  --list-block-button-text-color: #1A4747;
+  --list-block-button-border-color: #1A4747;
+  --list-block-divider-color: #E0E0E0; /* Assuming a light grey for divider */
+
+  padding: 24px 0;
+  max-width: 1200px; /* Example max-width for content */
+  margin: 0 auto; /* Center the block */
+}
+
+.list-block h2 {
+  color: var(--list-block-heading-color);
+  font-size: var(--list-block-heading-font-size);
+  font-weight: var(--list-block-heading-font-weight);
+  margin: 0 0 24px 0; /* Reset default margin, add bottom margin */
+  padding: 0; /* Reset default padding */
+}
+
+.list-block .list-block-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  gap: 16px; /* Horizontal spacing between icon, title, button */
+}
+
+.list-block .list-block-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--list-block-icon-circle-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.list-block .list-block-icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+  color: var(--list-block-icon-color);
+  stroke: var(--list-block-icon-color); /* For outline icons */
+  fill: none; /* For outline icons */
+  stroke-width: 2; /* For outline icons */
+}
+
+.list-block .list-block-item-title {
+  color: var(--list-block-item-title-color);
+  font-size: var(--list-block-item-title-font-size);
+  font-weight: var(--list-block-item-title-font-weight);
+  margin: 0; /* Reset default paragraph margin */
+  padding: 0; /* Reset default padding */
+  flex-grow: 1; /* Allow title to take available space */
+}
+
+.list-block .list-block-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--list-block-button-border-color);
+  border-radius: 20px;
+  color: var(--list-block-button-text-color);
+  text-decoration: none;
+  font-size: 1rem; /* 16px */
+  font-weight: 400;
+  white-space: nowrap; /* Prevent button text from wrapping */
+  flex-shrink: 0; /* Prevent button from shrinking */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.list-block .list-block-button svg {
+  width: 16px;
+  height: 16px;
+  color: var(--list-block-button-text-color);
+  stroke: var(--list-block-button-text-color);
+  fill: none;
+  stroke-width: 2;
+  transition: stroke 0.2s ease-in-out;
+}
+
+.list-block .list-block-button:hover {
+  background-color: var(--list-block-button-border-color);
+  color: #FFFFFF; /* White text on hover */
+  border-color: var(--list-block-button-border-color); /* Ensure border color stays */
+}
+
+.list-block .list-block-button:hover svg {
+  stroke: #FFFFFF;
+}
+
+.list-block .list-block-divider {
+  height: 1px;
+  background-color: var(--list-block-divider-color);
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Reset default padding */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .list-block .list-block-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px; /* Adjust vertical gap for stacked items */
+  }
+
+  .list-block .list-block-item-title {
+    width: 100%; /* Allow title to take full width */
+  }
+
+  .list-block .list-block-button {
+    width: 100%; /* Full-width button on mobile */
+    justify-content: center;
+  }
+}
+    
