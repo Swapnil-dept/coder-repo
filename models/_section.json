@@ -52,7 +52,8 @@
         "columns",
         "fragment",
         "tabs-card",
-        "card"
+        "card",
+        "list-block"
       ]
     }
   ]

@@ -3,7 +3,8 @@
     "id": "section",
     "components": [
       "section",
-      "/card"
+      "/card",
+      "/list-block"
     ]
   }
 ]

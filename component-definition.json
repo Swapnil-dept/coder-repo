@@ -59,6 +59,10 @@
         {
           "title": "Card",
           "id": "component-definition-card"
+        },
+        {
+          "title": "List Block",
+          "id": "component-definition-list-block"
         }
       ]
     }
