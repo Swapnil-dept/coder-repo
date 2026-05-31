@@ -1,67 +1,10 @@
 [
   {
-    "id": "main",
-    "components": [
-      "section"
-    ]
-  },
-  {
     "id": "section",
     "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "hero",
-      "cards",
-      "columns",
-      "fragment",
-      "tabs-card"
-    ]
-  },
-  {
-    "id": "accordion",
-    "components": [
-      "accordion-item"
-    ]
-  },
-  {
-    "id": "cards-gallery",
-    "components": [
-      "cards-gallery-item"
-    ]
-  },
-  {
-    "id": "cards",
-    "components": [
-      "card"
-    ]
-  },
-  {
-    "id": "columns",
-    "components": [
-      "column"
-    ]
-  },
-  {
-    "id": "column",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title"
-    ]
-  },
-  {
-    "id": "tabs-cards",
-    "components": [
-      "tabs-cards-tab"
-    ]
-  },
-  {
-    "id": "tabs-cards-tab-items",
-    "components": [
-      "tabs-cards-card"
+      "section",
+      "/card",
+      "/list-block"
     ]
   }
 ]

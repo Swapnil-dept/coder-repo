@@ -186,32 +186,95 @@
     "id": "card",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
+        "id": "card",
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "heading",
+            "label": "Heading",
+            "description": "Main heading for the block (optional, used in 'support-cards-with-header' variant)."
+          },
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "subheading",
+            "label": "Subheading",
+            "description": "Subheading/introductory text for the block (optional, used in 'support-cards-with-header' variant)."
+          },
+          {
+            "component": "select",
+            "name": "classes",
+            "label": "Variant",
+            "valueType": "string",
+            "options": [
+              {
+                "name": "Icon Cards",
+                "value": "icon-cards"
+              },
+              {
+                "name": "Text Cards",
+                "value": "text-cards"
+              },
+              {
+                "name": "Support Cards with Header",
+                "value": "support-cards-with-header"
+              },
+              {
+                "name": "Member Spotlight Cards",
+                "value": "member-spotlight-cards"
+              }
+            ]
+          }
+        ]
       },
       {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "tag",
-        "label": "Tag",
-        "value": ""
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "link",
-        "label": "CTA Link",
-        "value": ""
+        "id": "card-item",
+        "fields": [
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "col1_item_icon",
+            "label": "Icon",
+            "multi": false,
+            "description": "Reference to an image or SVG for the card icon (optional, used in 'icon-cards' variant)."
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "col1_item_icon_background_color",
+            "label": "Icon Background Color",
+            "description": "Hex code for the circular background color of the icon (optional, used in 'icon-cards' variant)."
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "col2_item_title",
+            "label": "Title",
+            "description": "Title of the card."
+          },
+          {
+            "component": "richtext",
+            "valueType": "string",
+            "name": "col2_item_description",
+            "label": "Description",
+            "description": "Body text/description for the card. Allows for inline links."
+          },
+          {
+            "component": "aem-content",
+            "valueType": "string",
+            "name": "col3_item_cta",
+            "label": "CTA Link",
+            "description": "URL for the Call-to-Action button (optional, not used in 'support-cards-with-header' variant)."
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "col3_item_ctaText",
+            "label": "CTA Label",
+            "description": "Text for the Call-to-Action button (optional, not used in 'support-cards-with-header' variant)."
+          }
+        ]
       }
     ]
   },
@@ -319,6 +382,57 @@
         "valueType": "string",
         "name": "linkText",
         "label": "Button Text"
+      }
+    ]
+  },
+  {
+    "id": "list-block",
+    "fields": [
+      {
+        "id": "list-block",
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "heading",
+            "label": "Heading"
+          }
+        ]
+      },
+      {
+        "id": "list-block-item",
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "col1_itemIconName",
+            "label": "Item Icon Name"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "col2_itemTitle",
+            "label": "Item Title"
+          },
+          {
+            "component": "aem-content",
+            "valueType": "string",
+            "name": "col3_buttonLink",
+            "label": "Button Link"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "col3_buttonLinkText",
+            "label": "Button Label"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "col3_buttonIconName",
+            "label": "Button Icon Name"
+          }
+        ]
       }
     ]
   }
