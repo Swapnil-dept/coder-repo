@@ -51,7 +51,8 @@
         "cards",
         "columns",
         "fragment", 
-        "tabs-card"
+        "tabs-card",
+        "news-cards"
       ]
     }
   ]
