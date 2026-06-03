@@ -16,15 +16,15 @@
       }
     },
     {
-      "title": "News Card",
-      "id": "news-card",
+      "title": "News Card Item",
+      "id": "news-card-item",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
-              "name": "News Card",
-              "model": "news-card"
+              "name": "News Card Item",
+              "model": "news-card-item"
             }
           }
         }
@@ -33,7 +33,7 @@
   ],
   "models": [
     {
-      "id": "news-card",
+      "id": "news-card-item",
       "fields": [
         {
           "component": "reference",
@@ -82,7 +82,7 @@
   "filters": [
     {
       "id": "news-cards",
-      "components": ["news-card"]
+      "components": ["news-card-item"]
     }
   ]
 }
