@@ -1,0 +1,105 @@
+/* News Cards block — "News and insights" 3-column card grid */
+
+/* ── List reset ───────────────────────────────────────────── */
+.news-cards > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+/* ── Single card ──────────────────────────────────────────── */
+.news-cards > ul > li {
+  display: flex;
+  flex-direction: column;
+  background: var(--background-color, #fff);
+}
+
+/* ── Image cell ───────────────────────────────────────────── */
+.news-cards .news-cards-image {
+  line-height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.news-cards .news-cards-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+/* ── Body cell ────────────────────────────────────────────── */
+.news-cards .news-cards-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 16px;
+  gap: 8px;
+}
+
+.news-cards .news-cards-body h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0d3b2e;
+  font-family: var(--heading-font-family, system-ui);
+}
+
+/* Optional description — dark red / maroon */
+.news-cards .news-cards-body p:not(.news-cards-cta-wrapper) {
+  margin: 0;
+  font-size: var(--body-font-size-s, 0.9rem);
+  color: #7b2c2c;
+  line-height: 1.5;
+}
+
+/* ── CTA button ───────────────────────────────────────────── */
+.news-cards .news-cards-cta-wrapper {
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.news-cards .news-cards-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border: 1.5px solid #0d3b2e;
+  border-radius: 999px;
+  color: #0d3b2e;
+  font-size: var(--body-font-size-s, 0.9rem);
+  font-weight: 600;
+  text-decoration: none;
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.news-cards .news-cards-cta:hover,
+.news-cards .news-cards-cta:focus-visible {
+  background: #0d3b2e;
+  color: #fff;
+}
+
+/* ── Tablet — 2 columns ───────────────────────────────────── */
+@media (width >= 600px) {
+  .news-cards > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Desktop — 3 columns ──────────────────────────────────── */
+@media (width >= 900px) {
+  .news-cards > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .news-cards .news-cards-body h3 {
+    font-size: 1.25rem;
+  }
+}
