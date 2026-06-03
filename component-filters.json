@@ -17,7 +17,8 @@
       "columns",
       "fragment",
       "tabs-card",
-      "news-cards"
+      "news-cards",
+      "tabs-accordion"
     ]
   },
   {
@@ -54,9 +55,21 @@
     ]
   },
   {
+    "id": "hero",
+    "components": [
+      "hero-nav-item"
+    ]
+  },
+  {
     "id": "news-cards",
     "components": [
       "news-card-item"
+    ]
+  },
+  {
+    "id": "tabs-accordion",
+    "components": [
+      "tab-item"
     ]
   },
   {

@@ -1,0 +1,275 @@
+
+    .tabs-accordion {
+      --tabs-accordion-active-bg: #004F47;
+      --tabs-accordion-active-text: #FFFFFF;
+      --tabs-accordion-default-text: #333333;
+      --tabs-accordion-section-heading-color: #004F47;
+      --tabs-accordion-document-title-color: #333333;
+      --tabs-accordion-document-description-color: #808080;
+      --tabs-accordion-icon-bg: #E6F2F1;
+      --tabs-accordion-button-border: #004F47;
+      --tabs-accordion-button-text: #004F47;
+      --tabs-accordion-button-hover-bg: #004F47;
+      --tabs-accordion-button-hover-text: #FFFFFF;
+
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 1200px; /* Example max width */
+      margin: 0 auto;
+      padding: 0 24px; /* Horizontal padding for content */
+    }
+
+    /* Tablist styles (Desktop) */
+    .tabs-accordion-tablist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 1px solid #E0E0E0;
+      margin-bottom: 40px;
+      padding-bottom: 8px; /* Space for border */
+    }
+
+    .tabs-accordion-tab-button {
+      background: none;
+      border: none;
+      padding: 16px 24px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--tabs-accordion-default-text);
+      transition: background-color 0.2s ease, color 0.2s ease;
+      border-radius: 8px 8px 0 0; /* Rounded top corners */
+      white-space: nowrap;
+    }
+
+    .tabs-accordion-tab-button:hover:not(.active) {
+      background-color: #F0F0F0; /* Light hover background */
+    }
+
+    .tabs-accordion-tab-button.active {
+      background-color: var(--tabs-accordion-active-bg);
+      color: var(--tabs-accordion-active-text);
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tabs-accordion-tab-button:focus-visible {
+      outline: 2px solid var(--tabs-accordion-active-bg);
+      outline-offset: 2px;
+    }
+
+    /* Tab Panels Container */
+    .tabs-accordion-tabpanels-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tabs-accordion-tab-panel {
+      padding-top: 0; /* Content starts directly below tabs */
+    }
+
+    .tabs-accordion-tab-panel[hidden] {
+      display: none;
+    }
+
+    /* Section Headings */
+    .tabs-accordion-section-heading {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--tabs-accordion-section-heading-color);
+      margin: 0;
+      padding: 0;
+      margin-bottom: 24px; /* Space below heading */
+      padding-top: 40px; /* Space above heading */
+    }
+
+    .tabs-accordion-section-heading:first-of-type {
+      padding-top: 0; /* No extra padding for the first heading in a panel */
+    }
+
+    /* Document List Item */
+    .tabs-accordion-document-item {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid #E0E0E0;
+    }
+
+    .tabs-accordion-document-item:last-of-type {
+      border-bottom: none; /* No border for the last item */
+    }
+
+    .tabs-accordion-document-item .document-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: var(--tabs-accordion-icon-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .tabs-accordion-document-item .document-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--tabs-accordion-section-heading-color); /* Icon color */
+    }
+
+    .tabs-accordion-document-details {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tabs-accordion-document-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--tabs-accordion-document-title-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    .tabs-accordion-document-description {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--tabs-accordion-document-description-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    .tabs-accordion-document-button-wrapper {
+      flex-shrink: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tabs-accordion-document-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border: 1px solid var(--tabs-accordion-button-border);
+      border-radius: 20px;
+      background-color: transparent;
+      color: var(--tabs-accordion-button-text);
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tabs-accordion-document-button:hover {
+      background-color: var(--tabs-accordion-button-hover-bg);
+      color: var(--tabs-accordion-button-hover-text);
+    }
+
+    .tabs-accordion-document-button:focus-visible {
+      outline: 2px solid var(--tabs-accordion-button-border);
+      outline-offset: 2px;
+    }
+
+    /* Mobile Accordion Styles */
+    @media (max-width: 767px) {
+      .tabs-accordion-tablist {
+        display: none; /* Hide tablist on mobile */
+      }
+
+      .tabs-accordion-accordion-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 24px;
+        border-bottom: none;
+      }
+
+      .tabs-accordion-accordion-item {
+        border: 1px solid #E0E0E0;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .tabs-accordion-accordion-item[open] {
+        border-color: var(--tabs-accordion-active-bg);
+      }
+
+      .tabs-accordion-accordion-summary {
+        list-style: none; /* Hide default marker */
+        padding: 0;
+        margin: 0;
+      }
+
+      .tabs-accordion-accordion-summary::-webkit-details-marker {
+        display: none; /* Hide default marker for webkit */
+      }
+
+      .tabs-accordion-accordion-header {
+        display: block; /* Make button fill summary */
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        padding: 16px 24px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--tabs-accordion-default-text);
+        transition: background-color 0.2s ease, color 0.2s ease;
+        border-radius: 0; /* No rounded corners for accordion header */
+      }
+
+      .tabs-accordion-accordion-item[open] .tabs-accordion-accordion-header {
+        background-color: var(--tabs-accordion-active-bg);
+        color: var(--tabs-accordion-active-text);
+        font-weight: 600;
+      }
+
+      .tabs-accordion-accordion-header:hover:not([aria-expanded="true"]) {
+        background-color: #F0F0F0;
+      }
+
+      .tabs-accordion-accordion-header:focus-visible {
+        outline: 2px solid var(--tabs-accordion-active-bg);
+        outline-offset: 2px;
+      }
+
+      .tabs-accordion-accordion-panel {
+        padding: 24px; /* Padding inside accordion panel */
+        border-top: 1px solid #E0E0E0;
+      }
+
+      .tabs-accordion-accordion-panel[hidden] {
+        display: none;
+      }
+
+      /* Document item stacking on mobile */
+      .tabs-accordion-document-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .tabs-accordion-document-details {
+        width: 100%;
+      }
+
+      .tabs-accordion-document-button-wrapper {
+        width: 100%;
+      }
+
+      .tabs-accordion-document-button {
+        width: 100%;
+      }
+
+      .tabs-accordion-section-heading {
+        padding-top: 24px; /* Reduced spacing for mobile */
+        margin-bottom: 16px;
+      }
+    }
+    

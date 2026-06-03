@@ -52,7 +52,8 @@
         "columns",
         "fragment", 
         "tabs-card",
-        "news-cards"
+        "news-cards",
+        "tabs-accordion"
       ]
     }
   ]

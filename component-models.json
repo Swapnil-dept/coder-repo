@@ -248,24 +248,69 @@
     "id": "hero",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
-        "value": ""
+        "component": "richtext",
+        "name": "col1_heading",
+        "label": "Heading",
+        "valueType": "string"
       },
       {
         "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
+        "name": "col1_body",
+        "label": "Body Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "col1_cta",
+        "label": "CTA Link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "col1_ctaText",
+        "label": "CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "col2_image",
+        "label": "Hero Image",
+        "multi": false,
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "col2_imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "col2_decorativeSvg",
+        "label": "Decorative SVG (inline code)",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "backgroundColor",
+        "label": "Background Color (Hex or CSS Var)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "hero-nav-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Navigation Item Label",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Navigation Item Link",
         "valueType": "string"
       }
     ]
@@ -313,6 +358,36 @@
         "name": "linkText",
         "label": "Link Text",
         "value": "Read more"
+      }
+    ]
+  },
+  {
+    "id": "tabs-accordion",
+    "fields": [
+      {
+        "component": "number",
+        "name": "defaultActiveTab",
+        "label": "Default Active Tab (0-indexed)",
+        "valueType": "number",
+        "min": 0,
+        "default": 0
+      }
+    ]
+  },
+  {
+    "id": "tab-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "col1_tabTitle",
+        "label": "Tab Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "col2_tabContent",
+        "label": "Tab Content"
       }
     ]
   },
