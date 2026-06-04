@@ -11,6 +11,18 @@ function isMediaCell(div) {
   return clone.textContent.trim() === '';
 }
 
+/** CSS-value-like pattern to detect a backgroundColor cell */
+const BG_COLOR_RE = /^(#[0-9a-f]{3,8}|rgb|hsl|[a-z]+)$/i;
+
+/**
+ * Returns true when the cell contains only a background-color string and nothing else.
+ * We treat a cell as a bg-color cell when it has no child elements and its trimmed
+ * text looks like a CSS color value.
+ */
+function isBgColorCell(div) {
+  return div.children.length === 0 && BG_COLOR_RE.test(div.textContent.trim());
+}
+
 /** Build a single slide element from a block row */
 function buildSlide(row) {
   const cells = [...row.children];
@@ -18,6 +30,8 @@ function buildSlide(row) {
   slide.className = 'image-carousel-slide';
   slide.setAttribute('role', 'group');
   slide.setAttribute('aria-roledescription', 'slide');
+  // Transfer UE instrumentation so the editor can track/select this slide item
+  moveInstrumentation(row, slide);
 
   const imageWrap = document.createElement('div');
   imageWrap.className = 'image-carousel-slide-image';
@@ -26,6 +40,12 @@ function buildSlide(row) {
   contentWrap.className = 'image-carousel-slide-content';
 
   cells.forEach((cell) => {
+    // ── Background color cell (plain CSS value text, no elements) ──
+    if (isBgColorCell(cell)) {
+      slide.style.setProperty('--slide-bg', cell.textContent.trim());
+      return; // do not render this cell in the DOM
+    }
+
     if (isMediaCell(cell)) {
       // ── Image cell ─────────────────────────────────────────
       const picture = cell.querySelector('picture');
@@ -59,10 +79,6 @@ function buildSlide(row) {
       });
     }
   });
-
-  // Read optional background color from a data attribute set in JSON / UE
-  const bgColor = row.dataset.backgroundColor || '';
-  if (bgColor) slide.style.setProperty('--slide-bg', bgColor);
 
   slide.append(imageWrap, contentWrap);
   return slide;
