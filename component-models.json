@@ -391,6 +391,32 @@
     ]
   },
   {
+    "id": "rtb-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Badge Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Badge Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Description Text",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "tabs-cards-tab",
     "fields": [
       {

@@ -1,0 +1,86 @@
+/* ── Reason to Believe block ─────────────────────────────────────── */
+main .reason-to-believe {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px 24px;
+  padding: 48px 24px;
+  background: #fff;
+  text-align: center;
+}
+
+@media (width >= 600px) {
+  main .reason-to-believe {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 64px 40px;
+  }
+}
+
+@media (width >= 900px) {
+  main .reason-to-believe {
+    padding: 80px 80px;
+    gap: 0 40px;
+  }
+}
+
+/* ── Item ── */
+main .reason-to-believe .rtb-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ── Badge (circular image) ── */
+main .reason-to-believe .rtb-item-badge {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (width >= 600px) {
+  main .reason-to-believe .rtb-item-badge {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+main .reason-to-believe .rtb-item-badge picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+main .reason-to-believe .rtb-item-badge picture img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Text ── */
+main .reason-to-believe .rtb-item-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+main .reason-to-believe .rtb-item-text p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  font-weight: 400;
+  max-width: 200px;
+}
+
+main .reason-to-believe .rtb-item-text h2,
+main .reason-to-believe .rtb-item-text h3,
+main .reason-to-believe .rtb-item-text h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}

@@ -68,6 +68,12 @@
     ]
   },
   {
+    "id": "reason-to-believe",
+    "components": [
+      "rtb-item"
+    ]
+  },
+  {
     "id": "tabs-cards",
     "components": [
       "tabs-cards-tab"
