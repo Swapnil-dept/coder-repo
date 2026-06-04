@@ -52,15 +52,21 @@ export default function decorate(block) {
   const decorativeSvgDiv = col2Children.shift(); // Second child is decorativeSvg
 
   if (pictureDiv) {
+    // Support both document-authored <picture><img> and UE-authored bare <img>
     const picture = pictureDiv.querySelector('picture');
-    if (picture) {
-      const img = picture.querySelector('img');
-      if (img) {
-        const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-        moveInstrumentation(img, optimizedPic.querySelector('img'));
+    const bareImg = !picture ? pictureDiv.querySelector('img') : null;
+    const img = picture ? picture.querySelector('img') : bareImg;
+
+    if (img && img.src) {
+      const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+      moveInstrumentation(img, optimizedPic.querySelector('img'));
+      // Replace whatever source element existed, then append the new optimized picture
+      if (picture) {
         picture.replaceWith(optimizedPic);
+      } else {
+        bareImg.replaceWith(optimizedPic);
       }
-      heroImageContainer.append(picture);
+      heroImageContainer.append(optimizedPic); // append the NEW picture, not the old one
     }
   }
 

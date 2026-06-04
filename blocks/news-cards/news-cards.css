@@ -24,6 +24,19 @@
   border-radius: 12px;
 }
 
+/* <p> wrapper added by document authoring */
+.news-cards .news-cards-image p {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+/* <picture> is inline by default — must be block */
+.news-cards .news-cards-image picture {
+  display: block;
+  width: 100%;
+}
+
 .news-cards .news-cards-image img {
   width: 100%;
   aspect-ratio: 4 / 3;
