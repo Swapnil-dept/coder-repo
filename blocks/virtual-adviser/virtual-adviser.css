@@ -1,0 +1,141 @@
+/* Virtual Adviser block — two-column: image panel (left) + text (right) */
+
+/* ── Block wrapper ────────────────────────────────────────── */
+.virtual-adviser {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 48px 24px;
+  position: relative;
+}
+
+/* ── Left: image panel ────────────────────────────────────── */
+.virtual-adviser-image-panel {
+  background-color: #e8f5ee; /* light green from design */
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 260px;
+}
+
+.virtual-adviser-image-panel picture {
+  display: block;
+  width: 100%;
+}
+
+.virtual-adviser-image-panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* ── Decorative curved arrow ──────────────────────────────── */
+.virtual-adviser-arrow {
+  display: none; /* hidden on mobile */
+  position: absolute;
+  width: 80px;
+  height: 60px;
+  pointer-events: none;
+  z-index: 1;
+  /* positioned between columns at desktop — overridden in media query */
+}
+
+.virtual-adviser-arrow svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Right: text content ──────────────────────────────────── */
+.virtual-adviser-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.virtual-adviser-content h1,
+.virtual-adviser-content h2,
+.virtual-adviser-content h3 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #0d3b2e;
+  font-family: var(--heading-font-family, system-ui);
+  line-height: 1.2;
+}
+
+.virtual-adviser-content p {
+  margin: 0;
+  font-size: var(--body-font-size-m, 1rem);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ── CTA links (underlined text links) ───────────────────── */
+.virtual-adviser-content .virtual-adviser-cta-wrapper {
+  margin-top: 4px;
+}
+
+.virtual-adviser-content .virtual-adviser-cta {
+  display: inline;
+  color: #0d3b2e;
+  font-size: var(--body-font-size-m, 1rem);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.virtual-adviser-content .virtual-adviser-cta:hover,
+.virtual-adviser-content .virtual-adviser-cta:focus-visible {
+  color: var(--link-hover-color, #1d9798);
+}
+
+/* ── Desktop: side-by-side ────────────────────────────────── */
+@media (width >= 900px) {
+  .virtual-adviser {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    padding: 64px 40px;
+  }
+
+  .virtual-adviser-image-panel {
+    flex: 0 0 50%;
+    min-height: 380px;
+    border-radius: 16px;
+    padding: 32px;
+    margin-right: 48px;
+  }
+
+  .virtual-adviser-arrow {
+    display: block;
+    /* vertically centered between columns, horizontally at the boundary */
+    top: 50%;
+    left: calc(50% - 12px);
+    transform: translate(-50%, -50%);
+  }
+
+  .virtual-adviser-content {
+    flex: 1;
+    padding-left: 24px;
+  }
+}
+
+/* ── Wide desktop ─────────────────────────────────────────── */
+@media (width >= 1200px) {
+  .virtual-adviser {
+    padding: 80px 80px;
+    max-width: 1400px;
+    margin-inline: auto;
+  }
+}
