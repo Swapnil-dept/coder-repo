@@ -42,20 +42,8 @@ export default function decorate(block) {
           leftPanel.append(optimized);
         }
       } else {
-        // ── Text cell → right panel ──────────────────────────
-        [...cell.children].forEach((child) => {
-          if (child.tagName === 'P') {
-            const anchors = [...child.querySelectorAll('a')];
-            const nonLinkText = child.textContent
-              .replace(anchors.map((a) => a.textContent).join(''), '')
-              .trim();
-            if (anchors.length && !nonLinkText) {
-              anchors.forEach((a) => a.classList.add('virtual-adviser-cta'));
-              child.classList.add('virtual-adviser-cta-wrapper');
-            }
-          }
-          rightPanel.append(child);
-        });
+        // ── Text cell → right panel (headings, paragraphs, links all kept as-is)
+        [...cell.children].forEach((child) => rightPanel.append(child));
       }
     });
   });
