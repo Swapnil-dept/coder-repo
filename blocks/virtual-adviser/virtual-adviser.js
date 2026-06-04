@@ -1,12 +1,6 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-/** Decorative green curved arrow SVG shown between columns */
-const ARROW_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 60" fill="none" aria-hidden="true">
-  <path d="M4 4 C 20 4, 60 4, 72 36" stroke="#33804D" stroke-width="3" stroke-linecap="round" fill="none"/>
-  <polyline points="60,32 72,36 68,48" stroke="#33804D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>`;
-
 /**
  * Returns true when a cell contains only media (picture/img) and no visible text.
  */
@@ -48,11 +42,6 @@ export default function decorate(block) {
     }
   }
 
-  // ── Decorative arrow (absolutely positioned between columns) ─
-  const arrowEl = document.createElement('div');
-  arrowEl.className = 'virtual-adviser-arrow';
-  arrowEl.innerHTML = ARROW_SVG;
-
   // ── Right column: text content ───────────────────────────
   const rightPanel = document.createElement('div');
   rightPanel.className = 'virtual-adviser-content';
@@ -80,5 +69,5 @@ export default function decorate(block) {
   }
 
   // ── Rebuild block DOM ────────────────────────────────────
-  block.replaceChildren(leftPanel, arrowEl, rightPanel);
+  block.replaceChildren(leftPanel, rightPanel);
 }
