@@ -271,6 +271,59 @@
     ]
   },
   {
+    "id": "image-carousel-slide",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Slide Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Heading",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "body",
+        "label": "Body Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Text",
+        "value": "Shop Now"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "backgroundColor",
+        "label": "Background Color (hex or CSS value)",
+        "value": "#f5e6d3"
+      }
+    ]
+  },
+  {
     "id": "tabs-cards-tab",
     "fields": [
       {
@@ -319,6 +372,31 @@
         "valueType": "string",
         "name": "linkText",
         "label": "Button Text"
+      }
+    ]
+  },
+  {
+    "id": "talk-to-expert",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Heading",
+        "value": "Talk to experts"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "endpoint",
+        "label": "Form Submit Endpoint (API URL)",
+        "value": "/api/book-appointment"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "tnc",
+        "label": "Terms & Conditions Page Link"
       }
     ]
   }
