@@ -63,6 +63,12 @@
     ]
   },
   {
+    "id": "media-carousel",
+    "components": [
+      "media-carousel-item"
+    ]
+  },
+  {
     "id": "promo-cards",
     "components": [
       "promo-card"
