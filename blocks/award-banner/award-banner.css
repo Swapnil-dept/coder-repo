@@ -1,0 +1,133 @@
+/* Award Banner block — badge (left, overflows) + text + pill CTA (right) */
+
+/* ── Block wrapper: mint-green rounded banner ─────────────── */
+.award-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e4f0eb;
+  border-radius: 16px;
+  padding: 32px 24px 32px 24px;
+  margin: 32px auto;
+  max-width: 1200px;
+  overflow: visible; /* allow badge to overflow vertically */
+  gap: 24px;
+}
+
+/* ── Left: badge panel ────────────────────────────────────── */
+.award-banner-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.award-banner-badge picture {
+  display: block;
+}
+
+.award-banner-badge img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  /* Badge overflows top & bottom — achieved with negative margin on desktop */
+  border-radius: 50%;
+  drop-shadow: none;
+  filter: drop-shadow(0 4px 12px rgb(0 0 0 / 15%));
+}
+
+/* ── Right: content panel ─────────────────────────────────── */
+.award-banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  text-align: center;
+}
+
+.award-banner-content h1,
+.award-banner-content h2,
+.award-banner-content h3,
+.award-banner-content h4 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  color: #0d3b2e;
+  font-family: var(--heading-font-family, system-ui);
+  line-height: 1.25;
+}
+
+.award-banner-content p {
+  margin: 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ── CTA pill button ──────────────────────────────────────── */
+.award-banner-cta-wrapper {
+  margin: 0;
+}
+
+.award-banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 1.5px solid #0d3b2e;
+  border-radius: 999px;
+  color: #0d3b2e;
+  background: transparent;
+  font-size: var(--body-font-size-m, 1rem);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.award-banner-cta:hover,
+.award-banner-cta:focus-visible {
+  background: #0d3b2e;
+  color: #fff;
+}
+
+.award-banner-arrow {
+  font-style: normal;
+  font-size: 1.1em;
+  line-height: 1;
+}
+
+/* ── Desktop: side-by-side, badge overflows vertically ───── */
+@media (width >= 900px) {
+  .award-banner {
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 48px 16px 0;
+    gap: 40px;
+  }
+
+  .award-banner-badge {
+    /* Pull badge so it overflows top and bottom of banner */
+    margin-top: -32px;
+    margin-bottom: -32px;
+    margin-left: 24px;
+  }
+
+  .award-banner-badge img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .award-banner-content {
+    text-align: left;
+    flex: 1;
+  }
+}
+
+/* ── Wide desktop ─────────────────────────────────────────── */
+@media (width >= 1200px) {
+  .award-banner-badge img {
+    width: 260px;
+    height: 260px;
+  }
+}
