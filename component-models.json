@@ -324,6 +324,73 @@
     ]
   },
   {
+    "id": "promo-card",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Heading (e.g. Stubborn acne scars?)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle (italic, e.g. Try our expert-led treatment)",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "offer",
+        "label": "Offer Text (e.g. Get up to <strong>20% OFF</strong>*)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "offerNote",
+        "label": "Offer Sub-note (e.g. On Facial Packages)",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "CTA Button Text",
+        "value": "Book Now"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Card Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tnc",
+        "label": "T&C Note (shown on image)",
+        "value": "*T&C Apply"
+      }
+    ]
+  },
+  {
     "id": "tabs-cards-tab",
     "fields": [
       {

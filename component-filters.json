@@ -18,7 +18,8 @@
       "fragment",
       "tabs-card",
       "image-carousel",
-      "talk-to-expert"
+      "talk-to-expert",
+      "promo-cards"
     ]
   },
   {
@@ -58,6 +59,12 @@
     "id": "image-carousel",
     "components": [
       "image-carousel-slide"
+    ]
+  },
+  {
+    "id": "promo-cards",
+    "components": [
+      "promo-card"
     ]
   },
   {

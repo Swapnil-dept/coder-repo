@@ -1,0 +1,185 @@
+/* Promo Cards block — 2×2 grid of peach cards with curved image reveal */
+
+/* ── Grid ─────────────────────────────────────────────────── */
+.promo-cards-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* ── Single card ──────────────────────────────────────────── */
+.promo-card {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: #f9d0b8; /* peach background */
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+/* ── Text panel ───────────────────────────────────────────── */
+.promo-card-text {
+  flex: 0 0 52%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 20px 24px 28px;
+  z-index: 1;
+}
+
+.promo-card-text h1,
+.promo-card-text h2,
+.promo-card-text h3,
+.promo-card-text h4 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  color: #1a1008;
+  line-height: 1.2;
+  font-family: var(--heading-font-family, 'Georgia', serif);
+}
+
+/* Italic subtitle */
+.promo-card-text p em,
+.promo-card-text p i {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: #4a3728;
+}
+
+/* Standalone italic-only paragraph */
+.promo-card-text p:has(> em:only-child),
+.promo-card-text p:has(> i:only-child) {
+  margin: 0;
+}
+
+/* Divider line */
+.promo-card-text hr {
+  border: none;
+  border-top: 1.5px solid #c4957a;
+  margin: 4px 0;
+  width: 70%;
+}
+
+/* Offer text paragraph */
+.promo-card-text p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #3a2010;
+  line-height: 1.4;
+}
+
+/* Bold large offer text e.g. "20% OFF" */
+.promo-card-text strong {
+  font-size: 1.3em;
+  color: #1a1008;
+}
+
+/* ── CTA Button ───────────────────────────────────────────── */
+.promo-card-cta-wrapper {
+  margin-top: 6px;
+}
+
+.promo-card-cta {
+  display: inline-block;
+  padding: 9px 22px;
+  border: 2px solid #1a1008;
+  border-radius: 4px;
+  background: transparent;
+  color: #1a1008;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.promo-card-cta:hover,
+.promo-card-cta:focus-visible {
+  background: #1a1008;
+  color: #fff;
+}
+
+/* ── Image panel ──────────────────────────────────────────── */
+.promo-card-image {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Curved white wave mask on the left edge of image */
+.promo-card-image::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 -1px;
+  width: 60px;
+  background: #f9d0b8;
+  border-radius: 0 60% 60% 0 / 0 40% 40% 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.promo-card-image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.promo-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* T&C note */
+.promo-card-tnc {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-size: 0.65rem;
+  color: #fff;
+  opacity: 0.85;
+  z-index: 3;
+  pointer-events: none;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 40%);
+}
+
+/* ── 2 columns on tablet+ ─────────────────────────────────── */
+@media (width >= 600px) {
+  .promo-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Larger cards on desktop ──────────────────────────────── */
+@media (width >= 900px) {
+  .promo-card {
+    min-height: 240px;
+  }
+
+  .promo-card-text {
+    padding: 28px 20px 28px 32px;
+    gap: 10px;
+  }
+
+  .promo-card-text h1,
+  .promo-card-text h2,
+  .promo-card-text h3,
+  .promo-card-text h4 {
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+  }
+
+  .promo-card-image::before {
+    width: 72px;
+  }
+}
