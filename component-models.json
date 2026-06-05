@@ -228,6 +228,10 @@
           {
             "name": "Box Container",
             "value": "box-container"
+          },
+          {
+            "name": "Button Display None",
+            "value": "btn-dp-none"
           }
         ]
       }

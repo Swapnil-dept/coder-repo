@@ -259,3 +259,7 @@ main > .section > div:has(> .image-carousel) {
     font-size: 3rem;
   }
 }
+
+.image-carousel-slide-content .btn-dp-none{
+    display: none;
+}
