@@ -23,7 +23,18 @@
           "component": "richtext",
           "name": "text",
           "label": "Text",
-          "valueType": "string"
+          "valueType": "string",
+          "plugins": {
+            "format": {
+              "features": ["bold", "italic", "underline"]
+            },
+            "justify": {
+              "features": ["justifyleft", "justifycenter", "justifyright"]
+            },
+            "sourceedit": {
+              "features": "*"
+            }
+          }
         },
         {
           "component": "multiselect",
