@@ -43,9 +43,12 @@ export default function decorate(block) {
 
     let tncText = '';
 
-    [...row.children].forEach((cell) => {
+    const cells = [...row.children];
+    for (let i = 0; i < cells.length; i += 1) {
+      const cell = cells[i];
+
       // Skip completely empty cells (UE may inject these for unset fields)
-      if (!cell.textContent.trim() && !cell.querySelector('picture, img')) return;
+      if (!cell.textContent.trim() && !cell.querySelector('picture, img')) continue;
 
       if (isMediaCell(cell)) {
         // ── Image cell ──────────────────────────────────────
@@ -61,32 +64,57 @@ export default function decorate(block) {
           moveInstrumentation(img, optimized.querySelector('img'));
           imagePanel.append(optimized);
         }
-      } else if (isTncCell(cell)) {
-        // ── T&C cell (short * prefixed line, no links/images) ──
-        tncText = cell.textContent.trim();
-      } else {
-        // ── Text cell — accumulate ALL non-media cells into text panel ──
-        [...cell.children].forEach((child) => {
-          // Detect CTA: a <p> containing only anchor(s) and no other text
-          if (child.tagName === 'P') {
-            const anchors = [...child.querySelectorAll('a')];
-            if (anchors.length) {
-              const nonLinkText = child.textContent
-                .replace(anchors.map((a) => a.textContent).join(''), '')
-                .trim();
-              if (!nonLinkText) {
-                anchors.forEach((a) => {
-                  a.classList.add('promo-card-cta');
-                  a.classList.remove('button'); // prevent global button gradient override
-                });
-                child.classList.add('promo-card-cta-wrapper');
-              }
-            }
-          }
-          textPanel.append(child);
-        });
+        continue;
       }
-    });
+
+      if (isTncCell(cell)) {
+        // ── T&C cell ──────────────────────────────────────
+        tncText = cell.textContent.trim();
+        continue;
+      }
+
+      // ── CTA detection: cell contains only anchor(s), no other visible text/media ──
+      // Works for both <div><a>...</a></div> and <div><p><a>...</a></p></div> patterns.
+      const cellAnchors = [...cell.querySelectorAll('a')];
+      const textBesidesLinks = cell.textContent
+        .replace(cellAnchors.map((a) => a.textContent).join(''), '')
+        .trim();
+
+      if (cellAnchors.length && textBesidesLinks === '' && !cell.querySelector('picture, img')) {
+        // Look ahead: next non-empty, non-media, non-link cell holds the button label
+        const nextCell = cells[i + 1];
+        if (
+          nextCell
+          && !isMediaCell(nextCell)
+          && !isTncCell(nextCell)
+          && !nextCell.querySelector('a')
+          && nextCell.textContent.trim()
+        ) {
+          cellAnchors[0].textContent = nextCell.textContent.trim();
+          i += 1; // consume the label cell
+        }
+        cellAnchors.forEach((a) => {
+          a.classList.add('promo-card-cta');
+          a.classList.remove('button'); // prevent global button gradient override
+        });
+        const ctaWrapper = document.createElement('p');
+        ctaWrapper.className = 'promo-card-cta-wrapper';
+        cellAnchors.forEach((a) => ctaWrapper.append(a));
+        textPanel.append(ctaWrapper);
+        continue;
+      }
+
+      // ── Regular text cell ──────────────────────────────────
+      if (cell.children.length) {
+        // Cell has block children (<p>, <h2>, etc.) — append them directly
+        [...cell.children].forEach((child) => textPanel.append(child));
+      } else if (cell.textContent.trim()) {
+        // Cell has only a text node (no element wrapper) — wrap in <p>
+        const p = document.createElement('p');
+        p.innerHTML = cell.innerHTML;
+        textPanel.append(p);
+      }
+    }
 
     // ── T&C badge (always rendered on the image panel) ──────
     const tncEl = document.createElement('span');
