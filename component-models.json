@@ -104,25 +104,17 @@
         "name": "text",
         "label": "Text",
         "valueType": "string",
-        "plugins": {
-          "format": {
-            "features": [
-              "bold",
-              "italic",
-              "underline"
-            ]
-          },
-          "justify": {
-            "features": [
-              "justifyleft",
-              "justifycenter",
-              "justifyright"
-            ]
-          },
-          "sourceedit": {
-            "features": "*"
-          }
-        }
+        "toolbar": [
+          "bold",
+          "italic",
+          "underline",
+          "|",
+          "alignment:left",
+          "alignment:center",
+          "alignment:right",
+          "|",
+          "sourceEditing"
+        ]
       },
       {
         "component": "multiselect",
