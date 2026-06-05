@@ -6,8 +6,6 @@ const PLAY_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" a
   <polygon points="24,16 52,32 24,48" fill="#fff"/>
 </svg>`;
 
-const STARS = '★★★★★';
-
 /** Returns true when a cell holds only media and no text */
 function isMediaCell(div) {
   if (!div.querySelector('picture, img')) return false;
@@ -26,9 +24,6 @@ function buildCard(row) {
   let videoUrl = '';
   let duration = '';
   let thumbnailPicture = null;
-  let reviewText = '';
-  let tags = [];
-  let customerName = '';
 
   // ── Parse cells ────────────────────────────────────────────────────────
   cells.forEach((cell) => {
@@ -54,27 +49,8 @@ function buildCard(row) {
     } else if (/^\d+:\d+$/.test(text)) {
       // Duration cell e.g. "0:30"
       duration = text;
-    } else {
-      // Generic text cell — look at children for structured content
-      [...cell.children].forEach((child) => {
-        const childText = child.textContent.trim();
-        if (child.tagName === 'P') {
-          // Tags: comma-separated inside a <p> with no heading
-          const anchors = [...child.querySelectorAll('a')];
-          if (anchors.length === 0 && /^[A-Za-z0-9 ,&-]+$/.test(childText) && childText.includes(',')) {
-            tags = childText.split(',').map((t) => t.trim()).filter(Boolean);
-          } else if (childText.startsWith('-') || childText.startsWith('–')) {
-            customerName = childText;
-          } else {
-            reviewText += (reviewText ? ' ' : '') + childText;
-          }
-        } else if (child.tagName === 'UL' || child.tagName === 'OL') {
-          tags = [...child.querySelectorAll('li')].map((li) => li.textContent.trim());
-        } else {
-          reviewText += (reviewText ? ' ' : '') + childText;
-        }
-      });
     }
+    // text cells are ignored — info panel has been removed
   });
 
   // ── Video / thumbnail panel ────────────────────────────────────────────
@@ -116,43 +92,7 @@ function buildCard(row) {
 
   videoWrap.append(playBtn);
 
-  // ── Info panel ─────────────────────────────────────────────────────────
-  const info = document.createElement('div');
-  info.className = 'cr-info';
-
-  const stars = document.createElement('p');
-  stars.className = 'cr-stars';
-  stars.setAttribute('aria-label', '5 stars');
-  stars.textContent = STARS;
-  info.append(stars);
-
-  if (reviewText) {
-    const review = document.createElement('p');
-    review.className = 'cr-review';
-    review.textContent = reviewText;
-    info.append(review);
-  }
-
-  if (tags.length) {
-    const tagList = document.createElement('div');
-    tagList.className = 'cr-tags';
-    tags.forEach((tag) => {
-      const pill = document.createElement('span');
-      pill.className = 'cr-tag';
-      pill.textContent = tag;
-      tagList.append(pill);
-    });
-    info.append(tagList);
-  }
-
-  if (customerName) {
-    const name = document.createElement('p');
-    name.className = 'cr-name';
-    name.textContent = customerName;
-    info.append(name);
-  }
-
-  card.append(videoWrap, info);
+  card.append(videoWrap);
   return card;
 }
 

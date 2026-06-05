@@ -45,50 +45,35 @@ main .customer-reviews .cr-track {
   display: flex;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 12px 0; /* room for zoom overflow */
   transition: transform 0.45s ease;
 }
 
-/* ── Card ── */
+/* ── Card — fixed 330px width ── */
 main .customer-reviews .cr-card {
-  flex: 0 0 100%;
-  min-width: 100%;
+  flex: 0 0 330px;
+  width: 330px;
+  min-width: 330px;
   padding: 0 10px;
   box-sizing: border-box;
-}
-
-@media (width >= 600px) {
-  main .customer-reviews .cr-card {
-    flex: 0 0 50%;
-    min-width: 50%;
-  }
-}
-
-@media (width >= 900px) {
-  main .customer-reviews .cr-card {
-    flex: 0 0 calc(100% / 3);
-    min-width: calc(100% / 3);
-  }
-}
-
-/* ── Card inner (pink outer shell) ── */
-main .customer-reviews .cr-card {
   display: flex;
   flex-direction: column;
 }
 
-main .customer-reviews .cr-video,
-main .customer-reviews .cr-info {
-  border-radius: 16px 16px 0 0;
-}
-
-/* Pink card wrapper — use pseudo on the video wrap */
+/* Pink card wrapper — hover zoom applied here */
 main .customer-reviews .cr-video {
   position: relative;
   background: #f5c6d8;
-  border-radius: 20px 20px 0 0;
-  padding: 14px 14px 0;
+  border-radius: 20px;
+  padding: 14px 14px 14px;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+main .customer-reviews .cr-card:hover .cr-video {
+  transform: scale(1.04);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
 
 /* ── Thumbnail ── */
@@ -154,58 +139,4 @@ main .customer-reviews .cr-iframe {
   aspect-ratio: 9 / 10;
   border: none;
   border-radius: 14px;
-}
-
-/* ── Info panel (yellow-green) ── */
-main .customer-reviews .cr-info {
-  background: #dde87a;
-  border-radius: 0 0 20px 20px;
-  padding: 14px 16px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-/* Stars */
-main .customer-reviews .cr-stars {
-  margin: 0;
-  font-size: 1.15rem;
-  color: #1a1a1a;
-  line-height: 1;
-  letter-spacing: 1px;
-}
-
-/* Review text */
-main .customer-reviews .cr-review {
-  margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.5;
-  color: #1a1a1a;
-}
-
-/* Tags */
-main .customer-reviews .cr-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 2px;
-}
-
-main .customer-reviews .cr-tag {
-  font-size: 0.7rem;
-  padding: 2px 10px;
-  border-radius: 999px;
-  border: 1px solid #555;
-  color: #333;
-  white-space: nowrap;
-  background: transparent;
-}
-
-/* Customer name */
-main .customer-reviews .cr-name {
-  margin: 0;
-  font-size: 0.78rem;
-  color: #444;
-  text-align: right;
-  font-style: italic;
 }
