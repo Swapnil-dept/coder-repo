@@ -269,7 +269,7 @@ header nav .nav-tools {
   grid-area: tools;
 }
 
-header nav .nav-tools .default-content-wrapper >u{
+header nav .nav-tools .default-content-wrapper >ul{
   display: flex;
   gap: 10px;
   list-style: none;
