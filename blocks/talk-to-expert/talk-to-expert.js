@@ -123,6 +123,8 @@ export default async function decorate(block) {
   let headingText = 'Talk to experts';
   let endpoint = SUBMIT_ENDPOINT;
   let tncHref = '#';
+  let ctaLink = '';
+  let ctaText = 'Book Appointment';
 
   rows.forEach((row) => {
     const [keyCell, valCell] = row.children;
@@ -131,6 +133,8 @@ export default async function decorate(block) {
     if (key === 'heading') headingText = valCell?.textContent.trim() || headingText;
     else if (key === 'endpoint') endpoint = val;
     else if (key === 'tnc') tncHref = val;
+    else if (key === 'ctalink') ctaLink = valCell?.querySelector('a')?.href || val || '';
+    else if (key === 'ctatext') ctaText = val || ctaText;
     // First row with no key/val structure = heading
     else if (!valCell && keyCell) headingText = keyCell.textContent.trim() || headingText;
   });
@@ -194,17 +198,28 @@ export default async function decorate(block) {
   tncText.append(document.createTextNode('I agree to '), tncLink);
   tncWrap.append(tncCheck, tncText);
 
-  // Submit button
-  const submitBtn = document.createElement('button');
-  submitBtn.type = 'submit';
-  submitBtn.className = 'tte-submit';
-  submitBtn.textContent = 'Book Appointment';
+  // Submit button — or link button if ctaLink is authored
+  let submitBtn;
+  if (ctaLink) {
+    submitBtn = document.createElement('a');
+    submitBtn.href = ctaLink;
+    submitBtn.target = '_blank';
+    submitBtn.rel = 'noopener noreferrer';
+    submitBtn.className = 'tte-submit tte-submit--link';
+    submitBtn.textContent = ctaText;
+  } else {
+    submitBtn = document.createElement('button');
+    submitBtn.type = 'submit';
+    submitBtn.className = 'tte-submit';
+    submitBtn.textContent = ctaText;
+  }
 
   form.append(nameWrap, mobileWrap, cityWrap, tncWrap, submitBtn);
 
-  // ── Form submit ───────────────────────────────────────────
+  // ── Form submit (only when no ctaLink) ──────────────────
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (ctaLink) return; // link-mode: form never submits
 
     const name = nameInput.value;
     const mobile = mobileInput.value;
@@ -240,7 +255,7 @@ export default async function decorate(block) {
       showMessage(form, 'error', 'Unable to connect. Please check your connection and try again.');
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Book Appointment';
+      submitBtn.textContent = ctaText;
     }
   });
 

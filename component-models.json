@@ -208,6 +208,18 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Align Content Center",
+            "value": "align-center"
+          },
+          {
+            "name": "Align Content Left",
+            "value": "align-left"
+          },
+          {
+            "name": "Align Content Right",
+            "value": "align-right"
           }
         ]
       }
@@ -642,6 +654,19 @@
         "valueType": "string",
         "name": "tnc",
         "label": "Terms & Conditions Page Link"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "ctaLink",
+        "label": "Button Link (if set, button navigates to this URL instead of submitting form)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaText",
+        "label": "Button Text",
+        "value": "Book Appointment"
       }
     ]
   }

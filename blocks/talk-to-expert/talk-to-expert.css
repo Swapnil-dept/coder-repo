@@ -164,7 +164,7 @@ main > .section > div:has(> .talk-to-expert) {
   text-decoration: underline;
 }
 
-/* ── Submit button ────────────────────────────────────────── */
+/* ── Submit button (and link-mode anchor) ─────────────────── */
 .talk-to-expert .tte-submit {
   padding: 13px 28px;
   background: #c8832a;
@@ -177,10 +177,17 @@ main > .section > div:has(> .talk-to-expert) {
   white-space: nowrap;
   transition: background 0.2s, opacity 0.2s;
   letter-spacing: 0.02em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.talk-to-expert .tte-submit:hover {
+.talk-to-expert .tte-submit:hover,
+.talk-to-expert .tte-submit--link:hover {
   background: #b3711f;
+  text-decoration: none;
+  color: #fff;
 }
 
 .talk-to-expert .tte-submit:disabled {

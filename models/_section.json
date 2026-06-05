@@ -33,6 +33,18 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Align Content Center",
+              "value": "align-center"
+            },
+            {
+              "name": "Align Content Left",
+              "value": "align-left"
+            },
+            {
+              "name": "Align Content Right",
+              "value": "align-right"
             }
           ]
         }
