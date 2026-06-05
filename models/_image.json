@@ -31,6 +31,11 @@
           "label": "Alt Text"
         },
         {
+          "component": "aem-content",
+          "name": "link",
+          "label": "Link (click anywhere on image)"
+        },
+        {
           "component": "multiselect",
           "name": "style",
           "label": "Style",

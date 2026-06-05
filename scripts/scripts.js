@@ -72,6 +72,28 @@ function buildAutoBlocks() {
 }
 
 /**
+ * Wraps images that have an authored link field in a clickable <a> tag.
+ * UE stores the link value as data-image-link on the img-wrapper element.
+ * Document authoring: wrap the image in an <a> in the doc itself.
+ * @param {Element} main The main element
+ */
+function decorateImageLinks(main) {
+  main.querySelectorAll('.img-wrapper').forEach((wrapper) => {
+    const href = wrapper.dataset.imageLink || wrapper.dataset.link;
+    if (!href) return;
+    const picture = wrapper.querySelector('picture') || wrapper.querySelector('img');
+    if (!picture) return;
+    // Don't double-wrap
+    if (picture.closest('a')) return;
+    const anchor = document.createElement('a');
+    anchor.href = href;
+    anchor.setAttribute('aria-label', wrapper.querySelector('img')?.alt || 'View more');
+    picture.replaceWith(anchor);
+    anchor.append(picture);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -80,6 +102,7 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateIcons(main);
+  decorateImageLinks(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);

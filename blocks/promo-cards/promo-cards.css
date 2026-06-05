@@ -9,7 +9,7 @@ main > .section > div:has(> .promo-cards) {
 /* ── Grid ─────────────────────────────────────────────────── */
 .promo-cards-grid {
   list-style: none;
-  margin: 0;
+  margin: 10px 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
@@ -23,7 +23,7 @@ main > .section > div:has(> .promo-cards) {
   flex-direction: row;
   align-items: stretch;
   background: #f9d0b8; /* peach background */
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
   min-height: 200px;
 }
@@ -96,7 +96,7 @@ main > .section > div:has(> .promo-cards) {
   display: inline-block;
   padding: 9px 22px;
   border: 2px solid #1a1008;
-  border-radius: 4px;
+  border-radius: 0;
   background: transparent;
   color: #1a1008;
   font-size: 0.82rem;

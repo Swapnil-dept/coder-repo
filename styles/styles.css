@@ -313,6 +313,18 @@ main > .section > div > p:has(> picture) {
   margin: 0;
 }
 
+/* Clickable image link wrapper */
+main .img-wrapper a {
+  display: block;
+  line-height: 0;
+  text-decoration: none;
+}
+
+main .img-wrapper a:hover {
+  opacity: 0.92;
+  transition: opacity 0.2s;
+}
+
 main .img-wrapper picture img,
 main .img-wrapper img,
 main > .section > div > p > picture > img,
