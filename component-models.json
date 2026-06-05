@@ -81,6 +81,44 @@
     ]
   },
   {
+    "id": "text",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Align Left",
+            "value": "align-left"
+          },
+          {
+            "name": "Align Center",
+            "value": "align-center"
+          },
+          {
+            "name": "Align Right",
+            "value": "align-right"
+          },
+          {
+            "name": "Background Grey",
+            "value": "bg-grey"
+          },
+          {
+            "name": "Background White",
+            "value": "bg-white"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "button",
     "fields": [
       {

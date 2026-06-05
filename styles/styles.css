@@ -260,3 +260,34 @@ main > .section:not(:first-of-type) {
     padding: 48px 0;
   }
 }
+
+/* ── Text component style variants ────────────────────────── */
+
+/* Alignment */
+main .align-left,
+main .align-left * {
+  text-align: left;
+}
+
+main .align-center,
+main .align-center * {
+  text-align: center;
+}
+
+main .align-right,
+main .align-right * {
+  text-align: right;
+}
+
+/* Background colours */
+main .bg-grey {
+  background-color: #f5f5f5;
+  padding: 24px;
+  border-radius: 4px;
+}
+
+main .bg-white {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 4px;
+}
