@@ -361,3 +361,57 @@ main .full-width img {
   height: auto;
   max-width: 100%;
 }
+
+/* ── wrap-link section: invisible anchor covers the entire image ── */
+
+/* Remove section padding/max-width so image is full-width */
+main > .section.wrap-link > div {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+/* Stack the button-container absolutely over the image */
+main .wrap-link .button-container {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  line-height: 0;
+}
+
+/* Anchor fills the full area — text is hidden */
+main .wrap-link .button-container a.button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  border: none !important;
+  color: transparent !important;
+  font-size: 0;
+  text-indent: -9999px;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Picture fills its parent */
+main .wrap-link .default-content-wrapper > p:has(picture) {
+  margin: 0;
+  line-height: 0;
+  display: block;
+}
+
+main .wrap-link .default-content-wrapper picture {
+  display: block;
+  width: 100%;
+}
+
+main .wrap-link .default-content-wrapper picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
