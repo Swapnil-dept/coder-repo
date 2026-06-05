@@ -119,31 +119,47 @@ function validate(name, mobile, city, agreed) {
 export default async function decorate(block) {
   const rows = [...block.children];
 
-  // Read optional config rows: heading text | endpoint | T&C URL
+  // Read optional config rows.
+  // UE authoring: single-cell rows in model field order → [heading, endpoint, tnc, ctaLink, ctaText]
+  // Doc authoring: two-cell key/value rows → | key | value |
   let headingText = 'Talk to experts';
   let endpoint = SUBMIT_ENDPOINT;
   let tncHref = '#';
   let ctaLink = '';
   let ctaText = 'Book Appointment';
 
-  rows.forEach((row) => {
-    const [keyCell, valCell] = row.children;
-    const key = keyCell?.textContent.trim().toLowerCase();
-    const val = valCell?.textContent.trim() || keyCell?.textContent.trim();
-    if (key === 'heading') headingText = valCell?.textContent.trim() || headingText;
-    else if (key === 'endpoint') endpoint = val;
-    else if (key === 'tnc') tncHref = val;
-    else if (key === 'ctalink') {
-      // Read from: anchor href (aem-content), raw text, or the entire cell content
-      const anchor = valCell?.querySelector('a');
-      const rawText = valCell?.textContent.trim();
-      ctaLink = (anchor?.href && !anchor.href.includes('/content/')) ? anchor.href
-        : rawText || '';
-    }
-    else if (key === 'ctatext') ctaText = val || ctaText;
-    // First row with no key/val structure = heading
-    else if (!valCell && keyCell) headingText = keyCell.textContent.trim() || headingText;
-  });
+  /**
+   * Extract a usable href from a cell: prefers the raw getAttribute('href')
+   * so we get the authored path, not a fully-resolved localhost URL.
+   */
+  function cellHref(cell) {
+    const a = cell?.querySelector('a');
+    return a ? (a.getAttribute('href') || a.href) : cell?.textContent.trim() || '';
+  }
+
+  const isKeyValue = rows.some((row) => row.children.length >= 2);
+
+  if (isKeyValue) {
+    // ── Document-authored key/value rows ─────────────────────
+    rows.forEach((row) => {
+      const [keyCell, valCell] = row.children;
+      const key = keyCell?.textContent.trim().toLowerCase();
+      if (key === 'heading') headingText = valCell?.textContent.trim() || headingText;
+      else if (key === 'endpoint') endpoint = cellHref(valCell) || valCell?.textContent.trim() || endpoint;
+      else if (key === 'tnc') tncHref = cellHref(valCell) || tncHref;
+      else if (key === 'ctalink') ctaLink = cellHref(valCell) || '';
+      else if (key === 'ctatext') ctaText = valCell?.textContent.trim() || ctaText;
+    });
+  } else {
+    // ── UE single-cell positional rows (model field order) ───
+    // Order matches component model: heading, endpoint, tnc, ctaLink, ctaText
+    const get = (i) => rows[i]?.querySelector(':scope > div') || rows[i];
+    headingText = get(0)?.textContent.trim() || headingText;
+    endpoint    = cellHref(get(1)) || endpoint;
+    tncHref     = cellHref(get(2)) || tncHref;
+    ctaLink     = cellHref(get(3)) || '';
+    ctaText     = get(4)?.textContent.trim() || ctaText;
+  }
 
   // Resolve block path for JSON stub
   const blockPath = new URL(import.meta.url).pathname.replace(/\/[^/]+\.js$/, '');
