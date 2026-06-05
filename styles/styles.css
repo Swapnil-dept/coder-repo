@@ -291,3 +291,29 @@ main .bg-white {
   padding: 24px;
   border-radius: 4px;
 }
+
+/* ── Image component style variants ───────────────────────── */
+
+/* Full width — breaks out of section max-width container */
+main > .section > div:has(> .full-width) {
+  max-width: 100%;
+  padding: 0;
+}
+
+main .full-width {
+  display: block;
+  width: 100%;
+}
+
+main .full-width picture {
+  display: block;
+  width: 100%;
+}
+
+main .full-width picture img,
+main .full-width img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
