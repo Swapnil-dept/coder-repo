@@ -133,7 +133,13 @@ export default async function decorate(block) {
     if (key === 'heading') headingText = valCell?.textContent.trim() || headingText;
     else if (key === 'endpoint') endpoint = val;
     else if (key === 'tnc') tncHref = val;
-    else if (key === 'ctalink') ctaLink = valCell?.querySelector('a')?.href || val || '';
+    else if (key === 'ctalink') {
+      // Read from: anchor href (aem-content), raw text, or the entire cell content
+      const anchor = valCell?.querySelector('a');
+      const rawText = valCell?.textContent.trim();
+      ctaLink = (anchor?.href && !anchor.href.includes('/content/')) ? anchor.href
+        : rawText || '';
+    }
     else if (key === 'ctatext') ctaText = val || ctaText;
     // First row with no key/val structure = heading
     else if (!valCell && keyCell) headingText = keyCell.textContent.trim() || headingText;

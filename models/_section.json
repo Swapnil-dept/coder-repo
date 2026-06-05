@@ -45,6 +45,14 @@
             {
               "name": "Align Content Right",
               "value": "align-right"
+            },
+             {
+              "name": "Wrap Link",
+              "value": "wrap-link"
+            },
+             {
+              "name": "Box Container",
+              "value": "box-container"
             }
           ]
         }

@@ -220,6 +220,14 @@
           {
             "name": "Align Content Right",
             "value": "align-right"
+          },
+          {
+            "name": "Wrap Link",
+            "value": "wrap-link"
+          },
+          {
+            "name": "Box Container",
+            "value": "box-container"
           }
         ]
       }
@@ -656,10 +664,11 @@
         "label": "Terms & Conditions Page Link"
       },
       {
-        "component": "aem-content",
+        "component": "text",
         "valueType": "string",
         "name": "ctaLink",
-        "label": "Button Link (if set, button navigates to this URL instead of submitting form)"
+        "label": "Button Link URL (if set, button opens this URL in a new tab)",
+        "value": ""
       },
       {
         "component": "text",

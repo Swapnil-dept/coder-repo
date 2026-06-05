@@ -132,7 +132,7 @@ pre {
 }
 
 main > div {
-  margin: 40px 16px;
+  /* margin: 40px 16px; */
 }
 
 input,
@@ -218,7 +218,7 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  /* margin: 40px 0; */
   background-color: #fff;
 }
 
@@ -234,7 +234,7 @@ main > .section:first-of-type {
 
 @media (width >= 900px) {
   main > .section > div {
-    padding: 0 32px;
+    /* padding: 0 32px; */
   }
 }
 
@@ -253,13 +253,19 @@ main .metadata.section {
 /* content sections get white background */
 main > .section:not(:first-of-type) {
   background-color: #fff;
-  padding: 24px 0;
+  /* padding: 24px 0; */
 }
 
 @media (width >= 992px) {
   main > .section:not(:first-of-type) {
-    padding: 48px 0;
+    /* padding: 48px 0; */
   }
+}
+
+main > .section > div {
+  max-width: 1240px;
+  margin: 0 auto;
+  /* padding: 0 24px; */
 }
 
 /* ── Text component style variants ────────────────────────── */
