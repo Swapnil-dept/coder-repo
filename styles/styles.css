@@ -12,7 +12,7 @@
 
 :root {
   /* colors */
-  --background-color: #f1f1f1;
+  --background-color: #fff;
   --light-color: #fff;
   --dark-color: #212529;
   --text-color: #212529;
@@ -219,6 +219,7 @@ main img {
 /* sections */
 main > .section {
   margin: 40px 0;
+  background-color: #fff;
 }
 
 main > .section > div {
@@ -294,17 +295,42 @@ main .bg-white {
 
 /* ── Image component style variants ───────────────────────── */
 
-/* Full width — breaks out of section max-width container */
+/* All image components: remove section max-width & padding */
+main > .section > div:has(> .img-wrapper),
+main > .section > div:has(> p > picture),
+main > .section > div:has(> picture) {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Stretch picture and img to full width */
+main .img-wrapper,
+main .img-wrapper picture,
+main > .section > div > p:has(> picture) {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+main .img-wrapper picture img,
+main .img-wrapper img,
+main > .section > div > p > picture > img,
+main > .section > div > picture > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Full-width variant (keeps existing .full-width class support) */
 main > .section > div:has(> .full-width) {
   max-width: 100%;
   padding: 0;
+  margin: 0;
 }
 
-main .full-width {
-  display: block;
-  width: 100%;
-}
-
+main .full-width,
 main .full-width picture {
   display: block;
   width: 100%;
