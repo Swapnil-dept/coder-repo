@@ -57,6 +57,10 @@
              {
               "name": "Button Display None",
               "value": "btn-dp-none"
+            },
+             {
+              "name": "BG White Smoke",
+              "value": "bg-white-smoke"
             }
           ]
         }
