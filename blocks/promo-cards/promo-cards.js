@@ -75,7 +75,10 @@ export default function decorate(block) {
                 .replace(anchors.map((a) => a.textContent).join(''), '')
                 .trim();
               if (!nonLinkText) {
-                anchors.forEach((a) => a.classList.add('promo-card-cta'));
+                anchors.forEach((a) => {
+                  a.classList.add('promo-card-cta');
+                  a.classList.remove('button'); // prevent global button gradient override
+                });
                 child.classList.add('promo-card-cta-wrapper');
               }
             }
