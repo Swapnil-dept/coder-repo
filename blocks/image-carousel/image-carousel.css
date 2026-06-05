@@ -1,5 +1,11 @@
 /* Image Carousel block — full-width banner with image left + text right */
 
+/* ── Break out of section max-width container ── */
+main > .section > div:has(> .image-carousel) {
+  max-width: 100%;
+  padding: 0;
+}
+
 /* ── Block wrapper ────────────────────────────────────────── */
 .image-carousel {
   position: relative;

@@ -1,5 +1,11 @@
 /* Talk to Expert block — dark bar with inline form */
 
+/* ── Break out of section max-width container ── */
+main > .section > div:has(> .talk-to-expert) {
+  max-width: 100%;
+  padding: 0;
+}
+
 /* ── Block wrapper ────────────────────────────────────────── */
 .talk-to-expert {
   background: #111;
