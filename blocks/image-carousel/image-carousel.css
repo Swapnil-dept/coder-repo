@@ -260,6 +260,6 @@ main > .section > div:has(> .image-carousel) {
   }
 }
 
-.image-carousel-slide-content .btn-dp-none{
+.btn-dp-none .image-carousel-slide-content{
     display: none;
 }
