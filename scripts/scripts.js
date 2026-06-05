@@ -72,19 +72,43 @@ function buildAutoBlocks() {
 }
 
 /**
- * Wraps images that have an authored link field in a clickable <a> tag.
- * UE stores the link value as data-image-link on the img-wrapper element.
- * Document authoring: wrap the image in an <a> in the doc itself.
+ * Wraps images in a clickable <a> tag when a link is present.
+ *
+ * Handles two authoring patterns:
+ *  1. Document authoring — author wraps image in a hyperlink → already <a><picture></a>
+ *  2. UE authoring — the `link` field renders as a sibling <p><a href="..."> next to
+ *     the <p><picture> inside the .img-wrapper div. We detect that sibling, grab its
+ *     href, wrap the picture in a new <a>, and remove the now-redundant link paragraph.
+ *  3. data attribute — UE may also surface the value as data-link on the wrapper div.
+ *
  * @param {Element} main The main element
  */
 function decorateImageLinks(main) {
   main.querySelectorAll('.img-wrapper').forEach((wrapper) => {
-    const href = wrapper.dataset.imageLink || wrapper.dataset.link;
-    if (!href) return;
     const picture = wrapper.querySelector('picture') || wrapper.querySelector('img');
     if (!picture) return;
-    // Don't double-wrap
+
+    // Already linked (document authoring)
     if (picture.closest('a')) return;
+
+    // Pattern 1: data-link / data-image-link attribute set by UE on the wrapper div
+    let href = wrapper.dataset.link || wrapper.dataset.imageLink;
+
+    // Pattern 2: sibling <p> containing only an <a> (UE aem-content field renders this)
+    if (!href) {
+      const linkPara = [...wrapper.querySelectorAll('p')].find((p) => {
+        const anchors = p.querySelectorAll('a');
+        return anchors.length === 1
+          && p.textContent.trim() === anchors[0].textContent.trim();
+      });
+      if (linkPara) {
+        href = linkPara.querySelector('a').href;
+        linkPara.remove(); // remove the redundant link paragraph from the DOM
+      }
+    }
+
+    if (!href) return;
+
     const anchor = document.createElement('a');
     anchor.href = href;
     anchor.setAttribute('aria-label', wrapper.querySelector('img')?.alt || 'View more');
