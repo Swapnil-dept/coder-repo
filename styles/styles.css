@@ -118,13 +118,7 @@ blockquote {
   margin-bottom: 0.25em;
 }
 
-/* Empty paragraphs (blank lines from pressing Enter) render as visible space */
-/* CKEditor inserts <p><br></p> for blank lines — p:empty alone won't match */
-p:empty,
-p:has(> br:only-child) {
-  min-height: 1em;
-  display: block;
-}
+
 
 code,
 pre {

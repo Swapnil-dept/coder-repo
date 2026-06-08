@@ -236,6 +236,18 @@
           {
             "name": "BG White Smoke",
             "value": "bg-white-smoke"
+          },
+          {
+            "name": "Margin 15",
+            "value": "margin-15"
+          },
+          {
+            "name": "Margin 40",
+            "value": "margin-40"
+          },
+          {
+            "name": "Margin 50",
+            "value": "margin-50"
           }
         ]
       }
