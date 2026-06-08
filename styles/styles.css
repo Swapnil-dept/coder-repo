@@ -118,8 +118,6 @@ blockquote {
   margin-bottom: 0.25em;
 }
 
-
-
 code,
 pre {
   font-size: var(--body-font-size-s);
@@ -419,4 +417,13 @@ main .wrap-link .default-content-wrapper picture img {
 }
 body main .section.bg-white-smoke{
   background-color: #f5f5f5;
+}
+main .mb-40 {
+  margin: 40px 0;
+}
+main .mb-15 {
+  margin: 15px 0;
+}
+main .mb-50 {
+  margin: 50px 0;
 }
