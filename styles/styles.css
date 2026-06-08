@@ -118,6 +118,13 @@ blockquote {
   margin-bottom: 0.25em;
 }
 
+/* Empty paragraphs (blank lines from pressing Enter) render as visible space */
+p:empty,
+p:not(:has(*)):empty {
+  min-height: 1em;
+  display: block;
+}
+
 code,
 pre {
   font-size: var(--body-font-size-s);
