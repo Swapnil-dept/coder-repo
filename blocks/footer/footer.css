@@ -1,91 +1,124 @@
-/* footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+/* ── Footer ────────────────────────────────────────────────── */
+.footer-wrapper {
+  background-color: #000;
+  font-family: var(--body-font-family, system-ui, sans-serif);
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
-}
-
-footer .footer p {
-  margin: 0;
-}
-
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
-  }
-} */
-.footer-wrapper{
-  font-family: Roboto, sans-serif;
- background-color: #fff;
+footer .footer {
+  background-color: #000;
 }
 
 .footer.block {
-     padding: 72px 0;
- max-width:1400px;
- margin:0 auto;
-}
-.footer.block ul:nth-child(1){
- display:flex;
- flex-wrap:wrap;
- margin-left: 16%;
- /* justify-content:end; */
- /* align-items: center; */
- /* text-align: center; */
-}
-.footer.block ul:nth-child(1) > li{
- flex:0 0 17%;
-}
-.footer.block ul:nth-child(1) > li >h3{
- font-style: italic;
- text-transform: uppercase;
- font-size: .875rem;
- margin-bottom: 2rem;
- line-height: 1.14;
- letter-spacing: 1.4px;
- /* text-align: left; */
- font-family: Roboto, sans-serif;
- font-weight: 900;
- color: #000;
- margin-top:0px;
+  background-color: #000;
+  color: #fff;
+  padding: 56px 40px 40px;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.footer.block ul > li >  ul > li {
-     margin-bottom: 2rem;
- padding-right: 15px;
-     font-weight: 400;
- line-height: 1.38;
- letter-spacing: .1px;
- font-size: 1rem;
-
+/* ── Top nav columns grid ──────────────────────────────────── */
+.footer.block .default-content-wrapper > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 32px 24px;
 }
 
-.footer.block .default-content-wrapper > ul:nth-child(2){
- display:flex;
- justify-content:space-between;
-     color: #6c6c6c;
- font-size: .8125rem;
- letter-spacing: 1px;
- font-weight: 900;
- margin-left: 16%;
+/* Each top-level column */
+.footer.block .default-content-wrapper > ul > li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-.footer.block ul > li:nth-child(5) >  ul > li > a {
-  display:flex;
-  align-items:center;
-  gap:10px;
- }
-@media (max-width:786px){
- .footer.block ul:nth-child(1) > li{
- flex:0 0 50%;
-}
- .footer.block {
-     padding:48px 17px;
 
+/* ── Column headings ────────────────────────────────────────── */
+.footer.block ul > li > h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: none;
+  font-style: normal;
+  letter-spacing: 0.01em;
+  margin: 0 0 16px;
+  line-height: 1.3;
 }
-.footer.block ul:nth-child(1),.footer.block .default-content-wrapper > ul:nth-child(2){
-  margin-left: unset;
+
+/* ── Nested link lists ─────────────────────────────────────── */
+.footer.block ul > li > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
+.footer.block ul > li > ul > li {
+  margin-bottom: 10px;
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #ccc;
+  padding: 0;
+}
+
+.footer.block ul > li > ul > li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer.block ul > li > ul > li a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ── Copyright row (button-container items) ─────────────────── */
+.footer.block .button-container {
+  margin: 0;
+}
+
+.footer.block .button-container a.button,
+.footer.block .button-container a {
+  background: transparent !important;
+  border: none !important;
+  color: #888 !important;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  display: inline;
+  box-shadow: none;
+  white-space: normal;
+}
+
+/* ── Bottom copyright li items ──────────────────────────────── */
+.footer.block .default-content-wrapper > ul > li:has(.button-container) {
+  grid-column: span 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid #333;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (width <= 1100px) {
+  .footer.block .default-content-wrapper > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width <= 700px) {
+  .footer.block {
+    padding: 40px 20px 32px;
+  }
+
+  .footer.block .default-content-wrapper > ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 16px;
+  }
 }
