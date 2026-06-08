@@ -20,11 +20,13 @@ footer .footer {
 /* ── Top nav columns grid ──────────────────────────────────── */
 .footer.block .default-content-wrapper > ul {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 32px 24px;
+  max-width: 1200px;
+  text-align: center;
 }
 
 /* Each top-level column */
@@ -94,15 +96,25 @@ footer .footer {
   white-space: normal;
 }
 
+/* ── Single separator line above copyright ─────────────────── */
+.footer.block .default-content-wrapper > ul::after {
+  content: '';
+  display: block;
+  grid-column: 1 / -1;
+  border-top: 1px solid #333;
+  margin: 16px 0 0;
+}
+
 /* ── Bottom copyright li items ──────────────────────────────── */
 .footer.block .default-content-wrapper > ul > li:has(.button-container) {
-  grid-column: span 2;
+  grid-column: span 3;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
-  padding-top: 32px;
-  border-top: 1px solid #333;
+  padding-top: 8px;
+  border-top: none;
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
